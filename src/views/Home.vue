@@ -1,19 +1,33 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
+    <h1>{{}}</h1>
   </div>
 </template>
 
 <style></style>
 
 <script>
+import axios from "axios";
+// global axios
 export default {
   data: function () {
     return {
-      message: "Welcome to Vue.js!",
+      newPlaylistParams: {},
     };
   },
   created: function () {},
-  methods: {},
+  methods: {
+    createPlaylist: function () {
+      axios
+        .post("/playlists", this.newPlaylistParams)
+        .then((response) => {
+          console.log("playlists create", response);
+          this.newPlaylistParams = {};
+        })
+        .catch((error) => {
+          console.log("playlists create error", error.response);
+        });
+    },
+  },
 };
 </script>
