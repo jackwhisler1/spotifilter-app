@@ -4,9 +4,7 @@ import Home from "../views/Home.vue";
 import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
-import axios from "axios";
-
-axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
+import SpotifyCallback from "../views/SpotifyCallback.vue";
 
 Vue.use(VueRouter);
 
@@ -19,6 +17,7 @@ const routes = [
   { path: "/signup", name: "signup", component: Signup },
   { path: "/login", name: "login", component: Login },
   { path: "/logout", name: "logout", component: Logout },
+  { path: "/spotify/callback", name: "spotify-callback", component: SpotifyCallback },
 ];
 
 const router = new VueRouter({
