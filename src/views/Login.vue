@@ -35,6 +35,7 @@ export default {
         localStorage.setItem("jwt", response.data.jwt);
         localStorage.setItem("user_id", response.data.user_id);
         console.log(response.data);
+        // axios.get("/api/spotify_authorize");
         this.$router.push("/");
       });
     },

@@ -21,8 +21,14 @@ export default {
   },
   created: function () {
     this.playlistsIndex();
+    this.authorize();
   },
   methods: {
+    authorize: function () {
+      axios.get("/api/spotify_authorize").then((response) => {
+        console.log(response);
+      });
+    },
     playlistsIndex: function () {
       axios.get("/playlists").then((response) => {
         console.log(response.data);
