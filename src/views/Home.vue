@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <h1>{{}}</h1>
+    <h1>Welcome to SpotiFilter</h1>
+    <div v-for="playlist in playlists" v-bind:key="playlist.id">
+      <h2>{{ playlist.name }}</h2>
+      <p>Total Tracks: {{ playlist.tracks.total }}</p>
+    </div>
   </div>
 </template>
 
@@ -12,21 +16,18 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      newPlaylistParams: {},
+      playlists: [],
     };
   },
-  created: function () {},
+  created: function () {
+    this.playlistsIndex();
+  },
   methods: {
-    createPlaylist: function () {
-      axios
-        .post("/playlists", this.newPlaylistParams)
-        .then((response) => {
-          console.log("playlists create", response);
-          this.newPlaylistParams = {};
-        })
-        .catch((error) => {
-          console.log("playlists create error", error.response);
-        });
+    playlistsIndex: function () {
+      axios.get("/playlists").then((response) => {
+        console.log(response.data);
+        this.playlists = response.data;
+      });
     },
   },
 };
