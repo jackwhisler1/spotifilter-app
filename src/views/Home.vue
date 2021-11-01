@@ -10,6 +10,9 @@
     <div v-for="playlist in playlists" v-bind:key="playlist.id">
       <h2>{{ playlist.name }}</h2>
       <p>Total Tracks: {{ playlist.tracks.total }}</p>
+      <router-link :to="`/playlists/${playlist.id}`">
+        <button>Select</button>
+      </router-link>
     </div>
   </div>
 </template>
