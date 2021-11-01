@@ -1,9 +1,8 @@
 <template>
   <div class="playlists-show">
     <span>
-      <router-link :to="`/playlists/${playlist.id}`">
-        <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
-      </router-link>
+      <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
+
       <router-link to="/">
         <button>Back</button>
       </router-link>
@@ -56,6 +55,7 @@ export default {
         .then((response) => {
           console.log("playlists create", response);
           this.$router.push(`/playlists/${response.data.id}`);
+          this.showPlaylist();
         })
         .catch((error) => {
           console.log("playlists create error", error.response);

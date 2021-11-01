@@ -2,7 +2,7 @@
   <div class="home">
     <h1>Welcome to SpotiFilter</h1>
     <a
-      href="https://accounts.spotify.com/authorize?client_id=975e5460298e4e3aadfb5388395e65b9&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email user-library-modify playlist-modify-public"
+      :href="`https://accounts.spotify.com/authorize?client_id=${api_key}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email user-library-modify playlist-modify-public`"
     >
       Buttin
     </a>
@@ -26,6 +26,7 @@ export default {
   data: function () {
     return {
       playlists: [],
+      api_key: process.env.VUE_APP_SPOTIFY_API,
     };
   },
   created: function () {
