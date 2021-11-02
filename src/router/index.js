@@ -5,6 +5,7 @@ import PlaylistsShow1 from "../views/PlaylistsShow1.vue";
 import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
+import UsersShow from "../views/UsersShow.vue";
 import SpotifyCallback from "../views/SpotifyCallback.vue";
 import FlashMessage from "@smartweb/vue-flash-message";
 
@@ -25,6 +26,7 @@ const routes = [
   { path: "/signup", name: "signup", component: Signup },
   { path: "/login", name: "login", component: Login },
   { path: "/logout", name: "logout", component: Logout },
+  { path: "/users/:id", name: "users-show", component: UsersShow },
   { path: "/spotify/callback", name: "spotify-callback", component: SpotifyCallback },
 ];
 

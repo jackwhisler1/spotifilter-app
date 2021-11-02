@@ -10,6 +10,8 @@
         |
       </span>
       <span v-if="isLoggedIn()">
+        <router-link to="/users/:id">My Account</router-link>
+        |
         <router-link to="/logout">Logout</router-link>
       </span>
     </div>

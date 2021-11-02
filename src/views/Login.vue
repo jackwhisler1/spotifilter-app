@@ -2,9 +2,10 @@
   <div class="login">
     <form v-on:submit.prevent="submit()">
       <h1>Login</h1>
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
+
+      <div v-if="errors.length > 0">
+        <p>Username or password incorrect.</p>
+      </div>
       <div>
         <label>Email:</label>
         <input type="email" v-model="newSessionParams.email" />
@@ -30,14 +31,20 @@ export default {
   },
   methods: {
     submit: function () {
-      axios.post("/sessions", this.newSessionParams).then((response) => {
-        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
-        localStorage.setItem("jwt", response.data.jwt);
-        localStorage.setItem("user_id", response.data.user_id);
-        console.log(response.data);
-        // axios.get("/api/spotify_authorize");
-        this.$router.push("/");
-      });
+      axios
+        .post("/sessions", this.newSessionParams)
+        .then((response) => {
+          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem("user_id", response.data.user_id);
+          console.log(response.data);
+          // axios.get("/api/spotify_authorize");
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          console.log("login error", error.response);
+          this.errors.push(error.response.request.statusText);
+        });
     },
   },
 };
