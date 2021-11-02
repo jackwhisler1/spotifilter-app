@@ -7,7 +7,7 @@
     <div v-if="playlists.length === 0">
       <h2>Please authorize to allow Spotifiliter to use playlist information.</h2>
       <a
-        :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email user-library-modify playlist-modify-public`"
+        :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
       >
         <button>Authorize Spotifilter</button>
       </a>

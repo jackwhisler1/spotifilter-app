@@ -80,22 +80,6 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    confirmPassword: function () {
-      axios
-        .post("/sessions", this.newSessionParams)
-        .then((response) => {
-          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
-          localStorage.setItem("jwt", response.data.jwt);
-          localStorage.setItem("user_id", response.data.user_id);
-          console.log(response.data);
-          this.confimration = true;
-          // axios.get("/api/spotify_authorize");
-        })
-        .catch((error) => {
-          console.log("login error", error.response);
-          this.errors.push(error.response.request.statusText);
-        });
-    },
   },
 };
 </script>
