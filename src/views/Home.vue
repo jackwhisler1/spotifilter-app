@@ -1,6 +1,9 @@
 <template>
   <div class="home">
     <h1>Welcome to SpotiFilter</h1>
+    <div v-if="isLoggedIn()">
+      <p>Select a playlist to apply a filter.</p>
+    </div>
     <div v-if="playlists.length === 0">
       <h2>Please authorize to allow Spotifiliter to use playlist information.</h2>
       <a
@@ -10,14 +13,16 @@
       </a>
     </div>
     <hr width="80%" />
-    <div v-for="playlist in playlists" v-bind:key="playlist.id">
-      <h2>{{ playlist.name }}</h2>
-      <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
-      <p>Total Tracks: {{ playlist.tracks.total }}</p>
-      <router-link :to="`/playlists/${playlist.id}`">
-        <button>Select</button>
-      </router-link>
-      <hr size="1" noshade width="50%" />
+    <div v-if="isLoggedIn()">
+      <div v-for="playlist in playlists" v-bind:key="playlist.id">
+        <h2>{{ playlist.name }}</h2>
+        <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
+        <p>Total Tracks: {{ playlist.tracks.total }}</p>
+        <router-link :to="`/playlists/${playlist.id}`">
+          <button>Select</button>
+        </router-link>
+        <hr size="1" noshade width="50%" />
+      </div>
     </div>
   </div>
 </template>
@@ -43,6 +48,9 @@ export default {
         console.log(response.data);
         this.playlists = response.data;
       });
+    },
+    isLoggedIn: function () {
+      return localStorage.jwt;
     },
   },
 };
