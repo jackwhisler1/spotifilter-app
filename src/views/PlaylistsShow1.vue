@@ -2,6 +2,7 @@
   <div class="playlists-show">
     <span>
       <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
+      <br />
       <router-link to="/">
         <button>Back</button>
       </router-link>
@@ -101,13 +102,15 @@ export default {
         });
     },
     deletePlaylist: function () {
-      axios.delete(`/playlists/${this.$route.params.id}`).then(
-        this.flashMessage.success({
-          title: "Playlist Deleted",
-          time: 1200,
-        })
-      );
-      setTimeout(() => this.$router.push("/"), 1200);
+      if (confirm("Do you really want to delete this playlist?")) {
+        axios.delete(`/playlists/${this.$route.params.id}`).then(
+          this.flashMessage.success({
+            title: "Playlist Deleted",
+            time: 1200,
+          })
+        );
+        setTimeout(() => this.$router.push("/"), 1200);
+      }
     },
     getUserId: function () {
       axios
