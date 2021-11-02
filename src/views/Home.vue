@@ -1,18 +1,23 @@
 <template>
   <div class="home">
     <h1>Welcome to SpotiFilter</h1>
-
-    <a
-      :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email user-library-modify playlist-modify-public`"
-    >
-      <button>Authorize Spotifilter</button>
-    </a>
+    <div v-if="playlists.length === 0">
+      <h2>Please authorize to allow Spotifiliter to use playlist information.</h2>
+      <a
+        :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email user-library-modify playlist-modify-public`"
+      >
+        <button>Authorize Spotifilter</button>
+      </a>
+    </div>
+    <hr width="80%" />
     <div v-for="playlist in playlists" v-bind:key="playlist.id">
       <h2>{{ playlist.name }}</h2>
+      <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
       <p>Total Tracks: {{ playlist.tracks.total }}</p>
       <router-link :to="`/playlists/${playlist.id}`">
         <button>Select</button>
       </router-link>
+      <hr size="1" noshade width="50%" />
     </div>
   </div>
 </template>
