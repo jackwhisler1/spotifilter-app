@@ -6,9 +6,11 @@
       <router-link to="/shared_playlists">Shared Playlists</router-link>
       |
       <span v-if="!isLoggedIn()">
-        <router-link to="/signup">Signup</router-link>
-        |
         <router-link to="/login">Login</router-link>
+
+        |
+        <router-link to="/signup">Signup</router-link>
+
         |
       </span>
       <span v-if="isLoggedIn()">

@@ -40,8 +40,12 @@
           Description:
           <input type="text" v-model="editPlaylistParams.description" />
         </div>
+        <!-- <label for="shared">Share:</label>
+        <button id="shared" @click="isShared = !isShared">
+          {{ isShared ? "ON" : "OFF" }}
+        </button> -->
+        <button v-on:click="isShow = !isShow">Cancel</button>
         <button v-on:click="editPlaylist()">Submit</button>
-        <button>Close</button>
       </form>
     </span>
 
@@ -87,6 +91,7 @@ export default {
     this.showPlaylist();
     this.getUserId();
   },
+
   methods: {
     showPlaylist: function () {
       axios.get(`/playlists/${this.$route.params.id}`).then((response) => {
@@ -94,6 +99,7 @@ export default {
         this.playlist = response.data;
         this.tracks = response.data.tracks.items;
         this.playlistCreator = response.data.owner.id;
+        this.setEditParams();
       });
     },
     createPlaylist: function () {
@@ -134,6 +140,12 @@ export default {
         .catch((error) => {
           console.log("playlists edit error", error.response);
         });
+    },
+    setEditParams: function () {
+      this.editPlaylistParams = {
+        name: this.playlist.name,
+        description: this.playlist.description,
+      };
     },
     deletePlaylist: function () {
       if (confirm("Do you really want to delete this playlist?")) {
