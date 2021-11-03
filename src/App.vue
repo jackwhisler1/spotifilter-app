@@ -3,6 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
+      <router-link to="/shared_playlists">Shared Playlists</router-link>
+      |
       <span v-if="!isLoggedIn()">
         <router-link to="/signup">Signup</router-link>
         |

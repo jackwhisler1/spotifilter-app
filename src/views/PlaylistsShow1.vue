@@ -2,27 +2,34 @@
   <div class="playlists-show">
     <span>
       <label for="filter-select">Choose a filter:</label>
-      <select name="filters" id="filter-select" v-model="filter">
-        <option>Select Filter</option>
+      <select required name="filters" id="filter-select" v-model="filter">
         <option value="High Energy">High Energy</option>
-        <option value="Calm">Calm</option>
+        <option value="Calm" selected>Calm</option>
         <option value="Dance">Dance</option>
         <option value="Faster Tempo">Faster Tempo</option>
         <option value="Slower Tempo">Slower Tempo</option>
         <!-- <option value=""></option>
         <option value=""></option> -->
       </select>
+      &nbsp;
+      <label for="shared">Share:</label>
+      <button id="shared" @click="isShared = !isShared">
+        {{ isShared ? "ON" : "OFF" }}
+      </button>
+      &nbsp;
       <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
 
       <br />
       <br />
       <router-link to="/">
         <button>Back</button>
+        &nbsp;
       </router-link>
       <button v-if="playlistCreator === userId" v-on:click="deletePlaylist()">
         Delete Playlist
         <FlashMessage></FlashMessage>
       </button>
+      &nbsp;
       <button v-on:click="isShow = !isShow">Edit Playlist Details</button>
       <form v-if="isShow" method="dialog">
         <div>
@@ -72,6 +79,8 @@ export default {
         description: "",
       },
       isShow: false,
+      isShared: false,
+      shared_params: {},
     };
   },
   created: function () {
@@ -89,10 +98,20 @@ export default {
     },
     createPlaylist: function () {
       this.playlist.filter = this.filter;
+      // If share playlist option is marked, post to /shared_playlists
+      // Send object with playlist_id: "", user_id: int
+
       axios
         .post("/playlists", this.playlist)
         .then((response) => {
           console.log("playlists create", response);
+          if (this.isShared) {
+            this.shared_params = {
+              playlist_id: response.data.id,
+              user_id: localStorage.getItem("user_id"),
+            };
+            axios.post("/shared_playlists", this.shared_params);
+          }
           this.$router.push(`/playlists/${response.data.id}`);
           this.showPlaylist();
         })
