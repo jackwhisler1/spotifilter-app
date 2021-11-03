@@ -1,7 +1,17 @@
 <template>
   <div class="playlists-show">
     <span>
+      <label for="filter-select">Choose a filter:</label>
+      <select name="filters" id="filter-select" v-model="filter">
+        <option>Select Filter</option>
+        <option value="energy">High Energy</option>
+        <option value="calm">Calming</option>
+        <!-- <option value=""></option>
+        <option value=""></option> -->
+      </select>
       <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
+
+      <br />
       <br />
       <router-link to="/">
         <button>Back</button>
@@ -50,6 +60,7 @@ export default {
     return {
       playlist: {},
       tracks: [],
+      filter: "",
       newPlaylistParams: {},
       userId: "",
       playlistCreator: "",
@@ -74,6 +85,7 @@ export default {
       });
     },
     createPlaylist: function () {
+      this.playlist.filter = this.filter;
       axios
         .post("/playlists", this.playlist)
         .then((response) => {
