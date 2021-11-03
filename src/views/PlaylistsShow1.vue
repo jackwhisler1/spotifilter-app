@@ -4,8 +4,11 @@
       <label for="filter-select">Choose a filter:</label>
       <select name="filters" id="filter-select" v-model="filter">
         <option>Select Filter</option>
-        <option value="energy">High Energy</option>
-        <option value="calm">Calming</option>
+        <option value="High Energy">High Energy</option>
+        <option value="Calm">Calm</option>
+        <option value="Dance">Dance</option>
+        <option value="Faster Tempo">Faster Tempo</option>
+        <option value="Slower Tempo">Slower Tempo</option>
         <!-- <option value=""></option>
         <option value=""></option> -->
       </select>
