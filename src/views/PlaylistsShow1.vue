@@ -30,7 +30,7 @@
         <FlashMessage></FlashMessage>
       </button>
       &nbsp;
-      <button v-on:click="isShow = !isShow">Edit Playlist Details</button>
+      <button v-if="playlistCreator === userId" v-on:click="isShow = !isShow">Edit Playlist Details</button>
       <form v-if="isShow" method="dialog">
         <div>
           Playlist Title
