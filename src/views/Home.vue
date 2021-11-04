@@ -4,7 +4,7 @@
     <div v-if="isLoggedIn()">
       <p>Select a playlist to apply a filter.</p>
     </div>
-    <div v-if="playlists.length === 0">
+    <div>
       <h2>Please authorize to allow Spotifiliter to use playlist information.</h2>
       <a
         :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
@@ -14,7 +14,9 @@
     </div>
     <hr width="80%" />
     <div v-if="isLoggedIn()">
-      <div v-for="playlist in filterBy(playlists, 'rock')" v-bind:key="playlist.id">
+      Search:
+      <input v-model="filterAttribute" type="text" />
+      <div v-for="playlist in filterBy(playlists, filterAttribute)" v-bind:key="playlist.id">
         <h2>{{ playlist.name }}</h2>
         <div v-if="playlist.images">
           <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
@@ -40,6 +42,7 @@ export default {
   data: function () {
     return {
       playlists: [],
+      filterAttribute: "",
       apiKey: process.env.VUE_APP_SPOTIFY_API,
     };
   },
