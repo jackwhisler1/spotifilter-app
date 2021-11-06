@@ -61,12 +61,6 @@
   </div>
 </template>
 
-<style>
-img {
-  max-width: 20%;
-}
-</style>
-
 <script>
 import axios from "axios";
 export default {

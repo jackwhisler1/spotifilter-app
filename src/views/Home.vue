@@ -1,5 +1,108 @@
 <template>
   <div class="home">
+    <!-- Page body
+                ============================================================ -->
+    <div id="page-body" class="page-body">
+      <!-- row -->
+      <div class="row main-row justify-content-center">
+        <!-- Content area
+                        ==================================================== -->
+        <div id="primary" class="content-area col-lg-12">
+          <!-- Main -->
+          <main id="main" class="content-area-container site-main">
+            <!-- Section -->
+            <div class="main-section pt-72 pb-72">
+              <!-- container -->
+              <div class="container gx-4">
+                <!-- row -->
+                <div class="row gx-36">
+                  <!-- col-lg-12 -->
+                  <div class="col-lg-12">
+                    <!-- Portfolio wrapper -->
+                    <div class="portfolio-block-wrapper portfolio-block-layout-3 portfolio-block-front">
+                      <!-- Loop -->
+                      <div
+                        class="row gx-36 gy-36 row-cols-lg-3 row-cols-md-2 grid-wrapper isotope-grid"
+                        style="position: relative; height: 100%"
+                      >
+                        <!-- Grid item -->
+                        <div
+                          v-for="playlist in filterBy(playlists, filterAttribute)"
+                          v-bind:key="playlist.id"
+                          class="grid-item isotope-item isotope-graphics"
+                        >
+                          <!-- Post -->
+                          <article class="main-block portfolio-block format-standard">
+                            <!-- Block container -->
+                            <div class="main-block-container portfolio-block-container">
+                              <!-- Block header -->
+                              <div class="main-block-header portfolio-block-header">
+                                <a href="#" class="overlay-effect zoom-effect">
+                                  <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
+                                </a>
+                              </div>
+                              <!-- /End Block header -->
+
+                              <!-- Block body -->
+                              <div class="main-block-body portfolio-block-body">
+                                <!-- Block heading -->
+                                <div class="main-block-heading portfolio-block-heading">
+                                  <h2 class="h5 title">
+                                    <a href="#">{{ playlist.name }}</a>
+                                  </h2>
+
+                                  <ul class="meta-block">
+                                    <li class="meta-block-category">
+                                      <span>
+                                        <a href="#">Total Tracks: {{ playlist.tracks.total }}</a>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <!-- /End Block heading -->
+                              </div>
+                              <!--/End Block body -->
+                            </div>
+                            <!-- /End Block container -->
+                          </article>
+                          <!-- /End Post -->
+                        </div>
+                        <!-- /End Grid item -->
+                      </div>
+                      <!-- /End Loop -->
+
+                      <!-- Pagination -->
+                      <div class="row gx-36">
+                        <!-- col-lg-12 -->
+                        <div class="col-lg-12">
+                          <nav aria-label="Page navigation" class="pagination-block">
+                            <a href="#" class="btn btn-accent">LOAD MORE</a>
+                          </nav>
+                        </div>
+                        <!-- /End col-lg-12 -->
+                      </div>
+                      <!-- /End Pagination -->
+                    </div>
+                    <!-- /End Portfolio wrapper -->
+                  </div>
+                  <!-- /End col-lg-12 -->
+                </div>
+                <!-- /End row -->
+              </div>
+              <!-- /End container -->
+            </div>
+            <!-- /End Section -->
+          </main>
+          <!-- /End Main -->
+        </div>
+        <!-- /End Content area -->
+      </div>
+      <!-- /End row -->
+    </div>
+    <!-- /End Page body -->
+
+    <!--  -->
+    <!-- My Code -->
     <h1>Welcome to SpotiFilter</h1>
     <div v-if="isLoggedIn()">
       <p>Select a playlist to apply a filter.</p>
@@ -16,7 +119,7 @@
     <div v-if="isLoggedIn()">
       Search:
       <input v-model="filterAttribute" type="text" />
-      <div v-for="playlist in filterBy(playlists, filterAttribute)" v-bind:key="playlist.id">
+      <!-- <div v-for="playlist in filterBy(playlists, filterAttribute)" v-bind:key="playlist.id">
         <h2>{{ playlist.name }}</h2>
         <div v-if="playlist.images">
           <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
@@ -26,7 +129,7 @@
           <button>Select</button>
         </router-link>
         <hr size="1" noshade width="50%" />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
