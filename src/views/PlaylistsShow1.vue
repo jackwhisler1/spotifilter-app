@@ -72,15 +72,75 @@
       <button v-on:click="editPlaylist()">Submit</button>
     </form>
 
-    <h1>{{ playlist.name }}</h1>
-    <p>{{ playlist.description }}</p>
-    <div v-for="track in tracks" v-bind:key="track.id">
-      <div v-if="track.track.album.images[0]">
-        <h3>"{{ track["track"]["name"] }}" by {{ track["track"]["album"]["artists"][0]["name"] }}</h3>
-        <p>{{ track["track"]["album"]["name"] }}</p>
-        <img v-bind:src="track.track.album.images[0].url" v-bind:alt="track.track.album.images" />
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!-- Section -->
+    <div class="main-section">
+      <!-- container -->
+      <div class="container gx-4">
+        <!-- row -->
+        <div class="row gx-36">
+          <!-- col-lg-8 -->
+          <div class="col-lg-8 offset-lg-2">
+            <!-- Section title -->
+            <div class="section-title text-center">
+              <!-- Section title container -->
+              <div class="section-title-container">
+                <!-- Section title body -->
+                <div class="section-title-body">
+                  <!-- Section title heading -->
+                  <div class="section-title-heading">
+                    <h2>{{ playlist.name }}</h2>
+                    <p>{{ playlist.description }}</p>
+                  </div>
+                  <!-- /End Section title heading -->
+                </div>
+                <!--/End Section title body -->
+              </div>
+              <!-- /End Section title container -->
+            </div>
+            <!-- /End Section title -->
+
+            <!-- GAP -->
+            <div class="gap gap-36"></div>
+          </div>
+          <!-- /End col-lg-8 -->
+
+          <!-- col-lg-12 -->
+          <div class="col-lg-12">
+            <div class="table-responsive">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Song</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="track in tracks" v-bind:key="track.id">
+                    <th>{{ tracks.indexOf(track) + 1 }}</th>
+                    <td>"{{ track["track"]["name"] }}"</td>
+                    <td>{{ track["track"]["album"]["artists"][0]["name"] }}</td>
+                    <td>{{ track["track"]["album"]["name"] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- /End col-lg-12 -->
+        </div>
+        <!-- /End row -->
       </div>
+      <!-- /End container -->
     </div>
+    <!-- /End Section -->
+    <!-- Show Playlist Tracks -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
   </div>
 </template>
 
