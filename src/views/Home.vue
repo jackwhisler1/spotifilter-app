@@ -65,7 +65,9 @@
                           <div class="section-title-body">
                             <!-- Block content -->
                             <div class="section-title-content">
-                              <p class="secondary-font-family white-color">Subtitle</p>
+                              <p class="secondary-font-family white-color">
+                                Select a playlist to apply a filter and create something new.
+                              </p>
                             </div>
                             <!-- /End Block content -->
                           </div>
@@ -313,7 +315,7 @@ export default {
       playlists: [],
       filterAttribute: "",
       sortOrder: 1,
-      sortAttribute: "name",
+      sortAttribute: "",
       apiKey: process.env.VUE_APP_SPOTIFY_API,
     };
   },

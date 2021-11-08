@@ -35,10 +35,13 @@
                   <a href="#" class="home" title="Home" v-if="playlistCreator === userId" v-on:click="deletePlaylist()">
                     <FlashMessage></FlashMessage>
                     >
-                    <span><i class="fas fa-home"></i></span>
+                    <span>
+                      Delete
+                      <i class="fas fa-trash"></i>
+                    </span>
                   </a>
                 </li>
-                <li class="breadcrumb-item active"><span>Delete</span></li>
+                <li><span></span></li>
               </ol>
             </nav>
             <!-- /End Breadcrumb -->
