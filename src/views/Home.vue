@@ -11,6 +11,102 @@
           <!-- Main -->
           <main id="main" class="content-area-container site-main">
             <!-- Section -->
+            <div
+              class="main-section pt-0 pb-0 dark-1-color-bg"
+              style="background-image: url(/assets/images/mixer-background.jpeg)"
+            >
+              <!-- container -->
+              <div class="container gx-4">
+                <!-- row -->
+                <div class="row gx-36 align-items-center justify-content-center height-100vh pt-72 pb-72">
+                  <!-- col-lg-12 -->
+                  <div class="col-lg-12">
+                    <!-- GAP -->
+                    <div class="gap gap-72 d-none d-xl-block"></div>
+
+                    <!-- Section title -->
+                    <div
+                      class="section-title section-title-intro text-center light-color mb-12"
+                      data-animation="animate__zoomIn"
+                    >
+                      <!-- Section title container -->
+                      <div class="section-title-container">
+                        <!-- Section title body -->
+                        <div class="section-title-body">
+                          <!-- Section title heading -->
+                          <div class="section-title-heading">
+                            <h1 class="font-weight-900">
+                              WELCOME TO
+                              <br />
+                              SPOTIFILTER
+                            </h1>
+                          </div>
+                          <!-- /End Section title heading -->
+                        </div>
+                        <!--/End Section title body -->
+                      </div>
+                      <!-- /End Section title container -->
+                    </div>
+                    <!-- /End Section title -->
+
+                    <!-- GAP -->
+                    <div class="gap gap-6 d-none d-md-block"></div>
+
+                    <!-- Section title -->
+                    <div
+                      class="section-title section-title-intro text-center light-color"
+                      data-animation="animate__zoomIn"
+                      data-animation-delay="200"
+                    >
+                      <!-- Section title container -->
+                      <div class="section-title-container">
+                        <!-- Section title body -->
+                        <div class="section-title-body">
+                          <!-- Block content -->
+                          <div class="section-title-content">
+                            <p class="secondary-font-family white-color">Subtitle</p>
+                          </div>
+                          <!-- /End Block content -->
+                        </div>
+                        <!--/End Section title body -->
+                      </div>
+                      <!-- /End Section title container -->
+                    </div>
+                    <!-- /End Section title -->
+
+                    <!-- GAP -->
+                    <div class="gap gap-18 d-none d-md-block"></div>
+
+                    <!-- Section title -->
+                    <div
+                      class="section-title section-title-intro text-center light-color mb-0"
+                      data-animation="animate__zoomIn"
+                      data-animation-delay="400"
+                    >
+                      <!-- Section title container -->
+                      <div class="section-title-container">
+                        <!-- Section title body -->
+                        <div class="section-title-body">
+                          <!-- Block content -->
+                          <div class="section-title-content">
+                            <p><a href="#" class="btn btn-light btn-lg btn-round">DISCOVER MORE</a></p>
+                          </div>
+                          <!-- /End Block content -->
+                        </div>
+                        <!--/End Section title body -->
+                      </div>
+                      <!-- /End Section title container -->
+                    </div>
+                    <!-- /End Section title -->
+                  </div>
+                  <!-- /End col-lg-12 -->
+                </div>
+                <!-- /End row -->
+              </div>
+              <!-- /End container -->
+            </div>
+            <!-- /End Section -->
+            <!-- Section -->
             <div class="main-section pt-72 pb-72">
               <!-- container -->
               <div class="container gx-4">
@@ -22,6 +118,7 @@
                     <div class="portfolio-block-wrapper portfolio-block-layout-3 portfolio-block-front">
                       <!-- Loop -->
                       <div
+                        v-if="playlists.length"
                         class="row gx-36 gy-36 row-cols-lg-3 row-cols-md-2 grid-wrapper isotope-grid"
                         style="position: relative; height: 100%"
                       >

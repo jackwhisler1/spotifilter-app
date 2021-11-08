@@ -32,7 +32,7 @@
                 </button>
                 <!-- /End Toggler button -->
                 <!-- Logo -->
-                <a class="navbar-brand" href="index.html" title="Bason">
+                <a class="navbar-brand" href="/" title="Bason">
                   <img src="/assets/images/spotifilter-logo-2.png" alt="SpotiFilter" class="normal" />
                   <!-- <img src="/assets/images/spotifilter_logo.png" alt="Bason" class="transparent" /> -->
                 </a>
@@ -52,7 +52,12 @@
                     </li>
                     <!-- Not Logged In -->
                     <li v-if="!isLoggedIn()" class="nav-item">
-                      <router-link class="nav-link" to="login"><span>Login</span></router-link>
+                      <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#modal-default">
+                        <span>Login</span>
+                      </a>
+                      <!-- <a href="#" class="btn btn-accent btn-sm" data-bs-toggle="modal" data-bs-target="#modal-default">
+                                                                    LAUNCH MODAL
+                                                                </a> -->
                     </li>
                     <li v-if="!isLoggedIn()" class="nav-item">
                       <router-link class="nav-link" to="/signup"><span>Sign Up</span></router-link>
@@ -86,6 +91,114 @@
       </div>
       <!-- /End Header section container -->
     </header>
+    <!-- Modal (Default) -->
+    <div class="modal fade" id="modal-default">
+      <!-- dialog -->
+      <div class="modal-dialog modal-dialog-centered">
+        <!-- content -->
+        <div class="modal-content">
+          <!-- close button -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <!-- body -->
+          <div class="modal-body">
+            <!-- row -->
+            <div class="row gx-36 justify-content-center">
+              <!-- GAP -->
+              <div class="col-lg-12">
+                <div class="gap gap-36"></div>
+              </div>
+              <!-- /End GAP -->
+
+              <!-- col-lg-12 -->
+              <div class="col-lg-12">
+                <!-- Image block -->
+                <div class="main-block image-block text-center">
+                  <!-- Block container -->
+                  <div class="main-block-container image-block-container">
+                    <!-- Block header -->
+                    <div class="main-block-header image-block-header">
+                      <img src="assets/images/subscribe.jpg" alt="Image" class="width-auto" />
+                    </div>
+                    <!-- /End Block header -->
+                  </div>
+                  <!-- /End Block container -->
+                </div>
+                <!-- /End Image block -->
+              </div>
+              <!-- /End col-lg-12 -->
+
+              <!-- GAP -->
+              <div class="col-lg-12">
+                <div class="gap gap-18"></div>
+              </div>
+              <!-- /End GAP -->
+
+              <!-- col-lg-10 -->
+              <div class="col-lg-10">
+                <!-- Mailchimp form -->
+                <div class="form-block form-block-mailchimp">
+                  <!-- Form container -->
+                  <div class="form-block-container">
+                    <!-- Form -->
+                    <form class="row">
+                      <!-- Email address -->
+                      <div class="col-lg-12">
+                        <label class="label" aria-label="Email address">
+                          <input
+                            class="form-control mt-0"
+                            type="email"
+                            name="EMAIL"
+                            placeholder="Email address"
+                            v-model="newSessionParams.email"
+                          />
+                        </label>
+                      </div>
+                      <!-- /End Email address -->
+                      <!-- Email address -->
+                      <div class="col-lg-12">
+                        <label class="label" aria-label="Password">
+                          <input
+                            class="form-control mt-0"
+                            type="password"
+                            name="EMAIL"
+                            placeholder="Password"
+                            v-model="newSessionParams.password"
+                          />
+                        </label>
+                      </div>
+                      <!-- /End Email address -->
+
+                      <!-- Submit button -->
+                      <div class="col-lg-12">
+                        <button
+                          type="submit"
+                          v-on:click="logIn()"
+                          class="btn btn-accent btn-block"
+                          data-bs-dismiss="modal"
+                        >
+                          <span>Submit</span>
+                        </button>
+                      </div>
+                      <!-- /End Submit button -->
+                    </form>
+                    <!-- /End Form -->
+                  </div>
+                  <!-- /End Form container -->
+                </div>
+                <!-- /End Mailchimp form -->
+              </div>
+              <!-- /End col-lg-10 -->
+            </div>
+            <!-- /End row -->
+          </div>
+          <!-- /End body -->
+        </div>
+        <!-- /End content -->
+      </div>
+      <!-- /End dialog -->
+    </div>
+    <!-- /End Modal (Default) -->
     <!-- /End Header section -->
     <!-- <div id="nav">
       <router-link to="/">Home</router-link>
@@ -282,9 +395,14 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function () {
-    return {};
+    return {
+      newSessionParams: {},
+      errors: [],
+    };
   },
   methods: {
     isLoggedIn: function () {
@@ -292,6 +410,21 @@ export default {
     },
     getUserId: function () {
       return localStorage.user_id;
+    },
+    logIn: function () {
+      axios
+        .post("/sessions", this.newSessionParams)
+        .then((response) => {
+          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem("user_id", response.data.user_id);
+          console.log(response.data);
+          // axios.get("/api/spotify_authorize");
+        })
+        .catch((error) => {
+          console.log("login error", error.response);
+          this.errors.push(error.response.request.statusText);
+        });
     },
   },
 };

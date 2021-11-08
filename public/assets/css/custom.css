@@ -1,0 +1,29 @@
+.light-color a:not(.btn):hover,
+.light-color h1:not([class*="-color"]),
+.light-color .h1:not([class*="-color"]),
+.light-color h2:not([class*="-color"]),
+.light-color .h2:not([class*="-color"]),
+.light-color h3:not([class*="-color"]),
+.light-color .h3:not([class*="-color"]),
+.light-color h4:not([class*="-color"]),
+.light-color .h4:not([class*="-color"]),
+.light-color h5:not([class*="-color"]),
+.light-color .h5:not([class*="-color"]),
+.light-color h6:not([class*="-color"]),
+.light-color .h6:not([class*="-color"]),
+.white-color.form-control,
+.white-color .form-control,
+.light-color .label,
+.white-color label.error,
+.white-color .label,
+.light-color b,
+.light-color strong {
+  color: #33c033;
+}
+
+/* .main-section {
+  opacity: 0.6;
+}
+.section-title-container {
+  opacity: 1;
+} */
