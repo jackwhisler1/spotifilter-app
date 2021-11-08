@@ -107,6 +107,57 @@
             </div>
             <!-- /End Section -->
             <!-- Section -->
+            <div class="main-section">
+              <!-- container -->
+              <div class="container gx-4">
+                <!-- row -->
+                <div class="row gx-36">
+                  <!-- col-lg-8 -->
+                  <div class="col-lg-8 offset-lg-2"></div>
+                  <!-- /End col-lg-8 -->
+
+                  <!-- col-lg-8 -->
+                  <div class="col-lg-8 offset-lg-2">
+                    <!-- Search form -->
+                    <div class="form-block form-block-search form-block-search-layout-4" clear-search>
+                      <!-- Form container -->
+                      <div class="form-block-container">
+                        <!-- Form -->
+                        <form class="row">
+                          <!-- col-lg-12 -->
+                          <div class="col-lg-12">
+                            <input
+                              class="form-control"
+                              type="search"
+                              name="s"
+                              placeholder="Search..."
+                              value=""
+                              autocomplete="off"
+                              aria-label="Search"
+                              v-model="filterAttribute"
+                            />
+
+                            <button type="submit" value="" aria-label="Submit" class="body-color">
+                              <i class="fas fa-search"></i>
+                              <span>SEARCH</span>
+                            </button>
+                          </div>
+                          <!-- /End col-lg-12 -->
+                        </form>
+                        <!-- /End Form -->
+                      </div>
+                      <!-- /End Form container -->
+                    </div>
+                    <!-- /End Search form -->
+                  </div>
+                  <!-- /End col-lg-8 -->
+                </div>
+                <!-- /End row -->
+              </div>
+              <!-- /End container -->
+            </div>
+            <!-- /End Section -->
+            <!-- Section -->
             <div class="main-section pt-72 pb-72">
               <!-- container -->
               <div class="container gx-4">
@@ -124,7 +175,7 @@
                       >
                         <!-- Grid item -->
                         <div
-                          v-for="playlist in filterBy(playlists, filterAttribute)"
+                          v-for="playlist in orderBy(filterBy(playlists, filterAttribute), 'tracks.total', -1)"
                           v-bind:key="playlist.id"
                           class="grid-item isotope-item isotope-graphics"
                         >

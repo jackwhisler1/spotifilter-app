@@ -200,25 +200,7 @@
     </div>
     <!-- /End Modal (Default) -->
     <!-- /End Header section -->
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/shared_playlists">Shared Playlists</router-link>
-      |
-      <span v-if="!isLoggedIn()">
-        <router-link to="/login">Login</router-link>
 
-        |
-        <router-link to="/signup">Signup</router-link>
-
-        |
-      </span>
-      <span v-if="isLoggedIn()">
-        <router-link :to="`/users/${getUserId()}`">My Account</router-link>
-        |
-        <router-link to="/logout">Logout</router-link>
-      </span>
-    </div> -->
     <div id="main-wrapper">
       <div id="main-container">
         <router-view />
