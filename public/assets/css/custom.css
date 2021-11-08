@@ -27,3 +27,7 @@
 .section-title-container {
   opacity: 1;
 } */
+.mask-custom {
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.55);
+}

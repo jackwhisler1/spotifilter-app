@@ -12,98 +12,100 @@
           <main id="main" class="content-area-container site-main">
             <!-- Section -->
             <div
-              class="main-section pt-0 pb-0 dark-1-color-bg"
+              class="main-section pt-0 pb-0 dark-1-color-bg bg-image"
               style="background-image: url(/assets/images/mixer-background.jpeg)"
             >
-              <!-- container -->
-              <div class="container gx-4">
-                <!-- row -->
-                <div class="row gx-36 align-items-center justify-content-center height-100vh pt-72 pb-72">
-                  <!-- col-lg-12 -->
-                  <div class="col-lg-12">
-                    <!-- GAP -->
-                    <div class="gap gap-72 d-none d-xl-block"></div>
+              <div class="mask mask-custom">
+                <!-- container -->
+                <div class="container gx-4">
+                  <!-- row -->
+                  <div class="row gx-36 align-items-center justify-content-center height-100vh pt-72 pb-72">
+                    <!-- col-lg-12 -->
+                    <div class="col-lg-12">
+                      <!-- GAP -->
+                      <div class="gap gap-72 d-none d-xl-block"></div>
 
-                    <!-- Section title -->
-                    <div
-                      class="section-title section-title-intro text-center light-color mb-12"
-                      data-animation="animate__zoomIn"
-                    >
-                      <!-- Section title container -->
-                      <div class="section-title-container">
-                        <!-- Section title body -->
-                        <div class="section-title-body">
-                          <!-- Section title heading -->
-                          <div class="section-title-heading">
-                            <h1 class="font-weight-900">
-                              WELCOME TO
-                              <br />
-                              SPOTIFILTER
-                            </h1>
+                      <!-- Section title -->
+                      <div
+                        class="section-title section-title-intro text-center light-color mb-12"
+                        data-animation="animate__zoomIn"
+                      >
+                        <!-- Section title container -->
+                        <div class="section-title-container">
+                          <!-- Section title body -->
+                          <div class="section-title-body">
+                            <!-- Section title heading -->
+                            <div class="section-title-heading">
+                              <h1 class="font-weight-900">
+                                WELCOME TO
+                                <br />
+                                SPOTIFILTER
+                              </h1>
+                            </div>
+                            <!-- /End Section title heading -->
                           </div>
-                          <!-- /End Section title heading -->
+                          <!--/End Section title body -->
                         </div>
-                        <!--/End Section title body -->
+                        <!-- /End Section title container -->
                       </div>
-                      <!-- /End Section title container -->
-                    </div>
-                    <!-- /End Section title -->
+                      <!-- /End Section title -->
 
-                    <!-- GAP -->
-                    <div class="gap gap-6 d-none d-md-block"></div>
+                      <!-- GAP -->
+                      <div class="gap gap-6 d-none d-md-block"></div>
 
-                    <!-- Section title -->
-                    <div
-                      class="section-title section-title-intro text-center light-color"
-                      data-animation="animate__zoomIn"
-                      data-animation-delay="200"
-                    >
-                      <!-- Section title container -->
-                      <div class="section-title-container">
-                        <!-- Section title body -->
-                        <div class="section-title-body">
-                          <!-- Block content -->
-                          <div class="section-title-content">
-                            <p class="secondary-font-family white-color">Subtitle</p>
+                      <!-- Section title -->
+                      <div
+                        class="section-title section-title-intro text-center light-color"
+                        data-animation="animate__zoomIn"
+                        data-animation-delay="200"
+                      >
+                        <!-- Section title container -->
+                        <div class="section-title-container">
+                          <!-- Section title body -->
+                          <div class="section-title-body">
+                            <!-- Block content -->
+                            <div class="section-title-content">
+                              <p class="secondary-font-family white-color">Subtitle</p>
+                            </div>
+                            <!-- /End Block content -->
                           </div>
-                          <!-- /End Block content -->
+                          <!--/End Section title body -->
                         </div>
-                        <!--/End Section title body -->
+                        <!-- /End Section title container -->
                       </div>
-                      <!-- /End Section title container -->
-                    </div>
-                    <!-- /End Section title -->
+                      <!-- /End Section title -->
 
-                    <!-- GAP -->
-                    <div class="gap gap-18 d-none d-md-block"></div>
+                      <!-- GAP -->
+                      <div class="gap gap-18 d-none d-md-block"></div>
 
-                    <!-- Section title -->
-                    <div
-                      class="section-title section-title-intro text-center light-color mb-0"
-                      data-animation="animate__zoomIn"
-                      data-animation-delay="400"
-                    >
-                      <!-- Section title container -->
-                      <div class="section-title-container">
-                        <!-- Section title body -->
-                        <div class="section-title-body">
-                          <!-- Block content -->
-                          <div class="section-title-content">
-                            <p><a href="#" class="btn btn-light btn-lg btn-round">DISCOVER MORE</a></p>
+                      <!-- Section title -->
+                      <div
+                        class="section-title section-title-intro text-center light-color mb-0"
+                        data-animation="animate__zoomIn"
+                        data-animation-delay="400"
+                      >
+                        <!-- Section title container -->
+                        <div class="section-title-container">
+                          <!-- Section title body -->
+                          <div class="section-title-body">
+                            <!-- Block content -->
+                            <div class="section-title-content">
+                              <p><a href="#" class="btn btn-light btn-lg btn-round">DISCOVER MORE</a></p>
+                            </div>
+                            <!-- /End Block content -->
                           </div>
-                          <!-- /End Block content -->
+                          <!--/End Section title body -->
                         </div>
-                        <!--/End Section title body -->
+                        <!-- /End Section title container -->
                       </div>
-                      <!-- /End Section title container -->
+                      <!-- /End Section title -->
                     </div>
-                    <!-- /End Section title -->
+                    <!-- /End col-lg-12 -->
                   </div>
-                  <!-- /End col-lg-12 -->
+                  <!-- /End row -->
                 </div>
-                <!-- /End row -->
+                <!-- /End container -->
               </div>
-              <!-- /End container -->
             </div>
             <!-- /End Section -->
             <!-- Section -->
