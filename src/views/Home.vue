@@ -125,6 +125,8 @@
                         <!-- Form -->
                         <form class="row">
                           <!-- col-lg-12 -->
+                          <!-- Dropdown Button -->
+
                           <div class="col-lg-12">
                             <input
                               class="form-control"
@@ -142,10 +144,30 @@
                               <span>SEARCH</span>
                             </button>
                           </div>
+
                           <!-- /End col-lg-12 -->
                         </form>
+
                         <!-- /End Form -->
                       </div>
+                      <a
+                        href="#"
+                        id="titleButton"
+                        role="button"
+                        v-on:click.prevent="setSortAttribute('name')"
+                        class="btn btn-md btn-dark ml-18 mr-18 mb-36"
+                      >
+                        Sort by Title
+                      </a>
+                      <a
+                        href="#"
+                        id="tracksButton"
+                        role="button"
+                        v-on:click.prevent="setSortAttribute('tracks.total')"
+                        class="btn btn-md btn-dark ml-18 mr-18 mb-36"
+                      >
+                        Sort by Total Tracks
+                      </a>
                       <!-- /End Form container -->
                     </div>
                     <!-- /End Search form -->
@@ -175,7 +197,7 @@
                       >
                         <!-- Grid item -->
                         <div
-                          v-for="playlist in orderBy(filterBy(playlists, filterAttribute), 'tracks.total', -1)"
+                          v-for="playlist in orderBy(filterBy(playlists, filterAttribute), sortAttribute, sortOrder)"
                           v-bind:key="playlist.id"
                           class="grid-item isotope-item isotope-graphics"
                         >
@@ -251,12 +273,9 @@
 
     <!--  -->
     <!-- My Code -->
-    <h1>Welcome to SpotiFilter</h1>
-    <div v-if="isLoggedIn()">
-      <p>Select a playlist to apply a filter.</p>
-    </div>
+    <!-- <p>Select a playlist to apply a filter.</p> -->
     <div>
-      <h2>Please authorize to allow Spotifiliter to use playlist information.</h2>
+      <!-- <h2>Please authorize to allow Spotifiliter to use playlist information.</h2> -->
       <a
         :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
       >
@@ -265,8 +284,7 @@
     </div>
     <hr width="80%" />
     <div v-if="isLoggedIn()">
-      Search:
-      <input v-model="filterAttribute" type="text" />
+      <!-- <input v-model="filterAttribute" type="text" /> -->
       <!-- <div v-for="playlist in filterBy(playlists, filterAttribute)" v-bind:key="playlist.id">
         <h2>{{ playlist.name }}</h2>
         <div v-if="playlist.images">
@@ -294,6 +312,8 @@ export default {
     return {
       playlists: [],
       filterAttribute: "",
+      sortOrder: 1,
+      sortAttribute: "name",
       apiKey: process.env.VUE_APP_SPOTIFY_API,
     };
   },
@@ -309,6 +329,16 @@ export default {
     },
     isLoggedIn: function () {
       return localStorage.jwt;
+    },
+    setSortAttribute: function (attribute) {
+      // if i click on the SAME button, change sort order to the opposite.
+      if (this.sortAttribute === attribute) {
+        this.sortOrder = this.sortOrder * -1;
+        // if i click on a DIFFERENT button, change sort attribute and change sort order to ascending
+      } else {
+        this.sortAttribute = attribute;
+        this.sortOrder = 1;
+      }
     },
   },
 };
