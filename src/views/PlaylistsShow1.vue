@@ -1,53 +1,76 @@
 <template>
   <div class="playlists-show">
-    <span>
-      <label for="filter-select">Choose a filter:</label>
-      <select required name="filters" id="filter-select" v-model="filter">
-        <option value="High Energy">High Energy</option>
-        <option value="Calm" selected>Calm</option>
-        <option value="Dance">Dance</option>
-        <option value="Faster Tempo">Faster Tempo</option>
-        <option value="Slower Tempo">Slower Tempo</option>
-        <!-- <option value=""></option>
-        <option value=""></option> -->
-      </select>
-      &nbsp;
-      <label for="shared">Share:</label>
-      <button id="shared" @click="isShared = !isShared">
-        {{ isShared ? "ON" : "OFF" }}
-      </button>
-      &nbsp;
-      <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
-
-      <br />
-      <br />
-      <router-link to="/">
-        <button>Back</button>
+    <div v-if="create_show">
+      <span>
+        <!-- Choose filter -->
+        <label for="filter-select">Choose a filter:</label>
+        <select required name="filters" id="filter-select" v-model="filter">
+          <option value="High Energy">High Energy</option>
+          <option value="Calm" selected>Calm</option>
+          <option value="Dance">Dance</option>
+          <option value="Faster Tempo">Faster Tempo</option>
+          <option value="Slower Tempo">Slower Tempo</option>
+          >
+        </select>
         &nbsp;
-      </router-link>
-      <button v-if="playlistCreator === userId" v-on:click="deletePlaylist()">
-        Delete Playlist
-        <FlashMessage></FlashMessage>
-      </button>
+        <!-- Choose number of songs -->
+        <label for="total-tracks-select">Number of tracks:</label>
+        <select required name="total-tracks" id="total-tracks-select" v-model="total_tracks">
+          <!-- <div "> -->
+          <option v-if="tracks.length < 10" value="minimum">Your playlist is too short!</option>
+
+          <option v-if="tracks.length >= 10" value="10">10</option>
+
+          <option v-if="tracks.length >= 20" value="20">20</option>
+
+          <option v-if="tracks.length >= 30" value="30">30</option>
+
+          <option v-if="tracks.length >= 50" value="50">50</option>
+
+          <option v-if="tracks.length >= 75" value="75">75</option>
+
+          <option v-if="tracks.length >= 100" value="100">100</option>
+
+          <!-- <option value=""></option>
+        <option value=""></option> -->
+        </select>
+        &nbsp;
+        <label for="shared">Share:</label>
+        <button id="shared" @click="isShared = !isShared">
+          {{ isShared ? "ON" : "OFF" }}
+        </button>
+        &nbsp;
+        <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
+      </span>
+    </div>
+    <br />
+    <br />
+    <router-link to="/">
+      <button>Back</button>
       &nbsp;
-      <button v-if="playlistCreator === userId" v-on:click="isShow = !isShow">Edit Playlist Details</button>
-      <form v-if="isShow" method="dialog">
-        <div>
-          Playlist Title
-          <input type="text" v-model="editPlaylistParams.name" />
-        </div>
-        <div>
-          Description:
-          <input type="text" v-model="editPlaylistParams.description" />
-        </div>
-        <!-- <label for="shared">Share:</label>
+    </router-link>
+    <button v-if="playlistCreator === userId" v-on:click="deletePlaylist()">
+      Delete Playlist
+      <FlashMessage></FlashMessage>
+    </button>
+    &nbsp;
+    <button v-if="playlistCreator === userId" v-on:click="isShow = !isShow">Edit Playlist Details</button>
+    <form v-if="isShow" method="dialog">
+      <div>
+        Playlist Title
+        <input type="text" v-model="editPlaylistParams.name" />
+      </div>
+      <div>
+        Description:
+        <input type="text" v-model="editPlaylistParams.description" />
+      </div>
+      <!-- <label for="shared">Share:</label>
         <button id="shared" @click="isShared = !isShared">
           {{ isShared ? "ON" : "OFF" }}
         </button> -->
-        <button v-on:click="isShow = !isShow">Cancel</button>
-        <button v-on:click="editPlaylist()">Submit</button>
-      </form>
-    </span>
+      <button v-on:click="isShow = !isShow">Cancel</button>
+      <button v-on:click="editPlaylist()">Submit</button>
+    </form>
 
     <h1>{{ playlist.name }}</h1>
     <p>{{ playlist.description }}</p>
@@ -70,6 +93,7 @@ export default {
       tracks: [],
       filter: "",
       newPlaylistParams: {},
+      total_tracks: 20,
       userId: "",
       playlistCreator: "",
       editPlaylistParams: {
@@ -79,6 +103,7 @@ export default {
       isShow: false,
       isShared: false,
       shared_params: {},
+      create_show: true,
     };
   },
   created: function () {
@@ -98,6 +123,7 @@ export default {
     },
     createPlaylist: function () {
       this.playlist.filter = this.filter;
+      this.playlist.total_tracks = this.total_tracks;
       // If share playlist option is marked, post to /shared_playlists
       // Send object with playlist_id: "", user_id: int
 
@@ -112,6 +138,7 @@ export default {
             };
             axios.post("/shared_playlists", this.shared_params);
           }
+          this.create_show = false;
           this.$router.push(`/playlists/${response.data.id}`);
           this.showPlaylist();
         })

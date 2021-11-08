@@ -205,9 +205,9 @@
                             <div class="main-block-container portfolio-block-container">
                               <!-- Block header -->
                               <div class="main-block-header portfolio-block-header">
-                                <a href="#" class="overlay-effect zoom-effect">
+                                <router-link :to="`/playlists/${playlist.id}`" class="overlay-effect zoom-effect">
                                   <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
-                                </a>
+                                </router-link>
                               </div>
                               <!-- /End Block header -->
 
