@@ -150,27 +150,25 @@
 
                         <!-- /End Form -->
                       </div>
-                      <a
-                        href="#"
-                        id="titleButton"
-                        role="button"
-                        v-on:click.prevent="setSortAttribute('name')"
-                        class="btn btn-md btn-dark ml-18 mr-18 mb-36"
-                      >
-                        Sort by Title
-                      </a>
-                      <a
-                        href="#"
-                        id="tracksButton"
-                        role="button"
-                        v-on:click.prevent="setSortAttribute('tracks.total')"
-                        class="btn btn-md btn-dark ml-18 mr-18 mb-36"
-                      >
-                        Sort by Total Tracks
-                      </a>
+
                       <!-- /End Form container -->
                     </div>
                     <!-- /End Search form -->
+
+                    <a
+                      href="#"
+                      v-on:click.prevent="setSortAttribute('name')"
+                      class="btn btn-md btn-dark ml-18 mr-18 mb-36"
+                    >
+                      Sort by Title
+                    </a>
+                    <a
+                      href="#"
+                      v-on:click.prevent="setSortAttribute('tracks.total')"
+                      class="btn btn-md btn-dark ml-18 mr-18 mb-36"
+                    >
+                      Sort by Total Tracks
+                    </a>
                   </div>
                   <!-- /End col-lg-8 -->
                 </div>
