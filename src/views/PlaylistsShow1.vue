@@ -32,9 +32,31 @@
             <nav class="breadcrumb-nav">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="#" class="home" title="Home" v-if="playlistCreator === userId" v-on:click="deletePlaylist()">
-                    <FlashMessage></FlashMessage>
+                  <a
+                    href="#"
+                    class="home"
+                    title="Edit Details"
+                    v-if="playlistCreator === userId"
+                    v-on:click="editPlaylist()"
+                  >
                     >
+                    <span>
+                      Edit Details
+                      <i class="fas fa-cog"></i>
+                    </span>
+                  </a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a
+                    href="#"
+                    class="home"
+                    title="Delete"
+                    v-if="playlistCreator === userId"
+                    v-on:click="deletePlaylist()"
+                  >
+                    >
+                    <FlashMessage></FlashMessage>
+
                     <span>
                       Delete
                       <i class="fas fa-trash"></i>
@@ -44,6 +66,10 @@
                 <li><span></span></li>
               </ol>
             </nav>
+            <!-- Block footer -->
+            <div class="main-block-footer text-block-footer"></div>
+
+            <!-- /End Block footer -->
             <!-- /End Breadcrumb -->
           </div>
           <!-- /End row -->
@@ -53,6 +79,7 @@
       <!-- /End Breadcrumb container -->
     </div>
     <!-- /End Breadcrumb section -->
+
     <div v-if="create_show">
       <span>
         <!-- Choose filter -->
@@ -96,8 +123,7 @@
         <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
       </span>
     </div>
-    <br />
-    <br />
+
     <button v-if="playlistCreator === userId" v-on:click="deletePlaylist()">
       Delete Playlist
       <FlashMessage></FlashMessage>
@@ -141,6 +167,9 @@
                   <!-- Section title heading -->
                   <div class="section-title-heading">
                     <h2>{{ playlist.name }}</h2>
+                    <a href="#" class="btn btn-accent btn-sm" data-bs-toggle="modal" data-bs-target="#modal-default">
+                      LAUNCH MODAL
+                    </a>
                     <p>{{ playlist.description }}</p>
                   </div>
                   <!-- /End Section title heading -->
@@ -185,11 +214,118 @@
       </div>
       <!-- /End container -->
     </div>
+
     <!-- /End Section -->
+
     <!-- Show Playlist Tracks -->
     <!--  -->
     <!--  -->
     <!--  -->
+
+    <!-- Modal (Default) -->
+    <div class="modal fade" id="modal-default">
+      <!-- dialog -->
+      <div class="modal-dialog modal-dialog-centered">
+        <!-- content -->
+        <div class="modal-content">
+          <!-- close button -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <!-- body -->
+          <div class="modal-body">
+            <!-- row -->
+            <div class="row gx-36 justify-content-center">
+              <!-- GAP -->
+              <div class="col-lg-12">
+                <div class="gap gap-36"></div>
+              </div>
+              <!-- /End GAP -->
+
+              <!-- col-lg-12 -->
+              <div class="col-lg-12">
+                <!-- Image block -->
+                <div class="main-block image-block text-center">
+                  <!-- Block container -->
+                  <div class="main-block-container image-block-container">
+                    <!-- Block header -->
+                    <div class="main-block-header image-block-header">
+                      <img src="/assets/images/subscribe.jpg" alt="Image" class="width-auto" />
+                    </div>
+                    <!-- /End Block header -->
+                  </div>
+                  <!-- /End Block container -->
+                </div>
+                <!-- /End Image block -->
+              </div>
+              <!-- /End col-lg-12 -->
+
+              <!-- GAP -->
+              <div class="col-lg-12">
+                <div class="gap gap-18"></div>
+              </div>
+              <!-- /End GAP -->
+
+              <!-- col-lg-10 -->
+              <div class="col-lg-10">
+                <!-- Mailchimp form -->
+                <div class="form-block form-block-mailchimp">
+                  <!-- Form container -->
+                  <div class="form-block-container">
+                    <!-- Form -->
+                    <form method="POST" action="#" class="row">
+                      <!-- First name -->
+                      <div class="col-lg-12">
+                        <label class="label" aria-label="Playlist Title">
+                          <input
+                            class="form-control mt-0"
+                            type="text"
+                            name="FNAME"
+                            :placeholder="editPlaylistParams.name"
+                          />
+                        </label>
+                      </div>
+                      <!-- /End First name -->
+
+                      <!-- Email address -->
+                      <div class="col-lg-12">
+                        <label class="label" aria-label="Email address">
+                          <input class="form-control mt-0" type="email" name="EMAIL" placeholder="Email address" />
+                        </label>
+                      </div>
+                      <!-- /End Email address -->
+
+                      <!-- Submit button -->
+                      <div class="col-lg-12">
+                        <button type="submit" class="btn btn-accent btn-block">
+                          <span>Save</span>
+                        </button>
+                        <button type="submit" class="btn btn-accent btn-block">
+                          <span>Delete</span>
+                        </button>
+                      </div>
+                      <!-- /End Submit button -->
+
+                      <!-- Message -->
+                      <div class="col-lg-12"></div>
+                      <!-- /End Message -->
+                    </form>
+                    <!-- /End Form -->
+                  </div>
+                  <!-- /End Form container -->
+                </div>
+                <!-- /End Mailchimp form -->
+              </div>
+              <!-- /End col-lg-10 -->
+            </div>
+            <!-- /End row -->
+          </div>
+          <!-- /End body -->
+        </div>
+        <!-- /End content -->
+      </div>
+      <!-- /End dialog -->
+    </div>
+    <!-- /End Modal (Default) -->
   </div>
 </template>
 

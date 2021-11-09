@@ -327,6 +327,10 @@ export default {
       axios.get("/playlists").then((response) => {
         console.log(response.data);
         this.playlists = response.data;
+
+        if (this.playlists === null) {
+          axios.get("/api/spotify/refresh").then((response) => console.log(response.data));
+        }
       });
     },
     isLoggedIn: function () {
@@ -342,6 +346,7 @@ export default {
         this.sortOrder = 1;
       }
     },
+    getRefreshedToken: function () {},
   },
 };
 </script>
