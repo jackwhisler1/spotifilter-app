@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     sharedPlaylistsIndex: function () {
-      // most recent 5? Can't request multiple playlists from spotify API unless they all belong to a user. Can do 5 separate get requests
       axios.get("/shared_playlists").then((response) => {
         console.log(response.data);
         this.shared_playlists = response.data;

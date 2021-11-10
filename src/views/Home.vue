@@ -163,12 +163,14 @@
                   <!-- /End col-lg-6 -->
                 </div>
                 <!-- /End row -->
-                <a
-                  class="btn btn-accent"
-                  :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
-                >
-                  Authorize Spotifilter
-                </a>
+                <div v-if="!hasAccessToken()">
+                  <a
+                    class="btn btn-accent"
+                    :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
+                  >
+                    Authorize Spotifilter
+                  </a>
+                </div>
               </div>
 
               <!-- /End container -->
@@ -347,7 +349,7 @@
 <script>
 import axios from "axios";
 import Vue2Filters from "vue2-filters";
-// global axios
+
 export default {
   mixins: [Vue2Filters.mixin],
   data: function () {
@@ -358,6 +360,9 @@ export default {
       sortAttribute: "",
       apiKey: process.env.VUE_APP_SPOTIFY_API,
     };
+  },
+  created: function () {
+    this.hasAccessToken();
   },
   mounted: function () {
     this.playlistsIndex();
@@ -373,8 +378,11 @@ export default {
         this.playlists = response.data;
       });
     },
-    isLoggedIn: function () {
-      return localStorage.jwt;
+    hasAccessToken: function () {
+      axios.get(`/users/${localStorage.getItem("user_id")}`).then((response) => {
+        console.log(response.data.access_token);
+        return response.data.access_token;
+      });
     },
     setSortAttribute: function (attribute) {
       // if i click on the SAME button, change sort order to the opposite.
