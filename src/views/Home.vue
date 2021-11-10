@@ -19,7 +19,7 @@
                 <!-- container -->
                 <div class="container gx-4">
                   <!-- row -->
-                  <div class="row gx-36 align-items-center justify-content-center height-100vh pt-72 pb-72">
+                  <div class="row gx-36 align-items-center justify-content-center height-100vh pt-0 pb-0">
                     <!-- col-lg-12 -->
                     <div class="col-lg-12">
                       <!-- GAP -->
@@ -50,9 +50,6 @@
                       </div>
                       <!-- /End Section title -->
 
-                      <!-- GAP -->
-                      <div class="gap gap-6 d-none d-md-block"></div>
-
                       <!-- Section title -->
                       <div
                         class="section-title section-title-intro text-center light-color"
@@ -76,11 +73,7 @@
                         <!-- /End Section title container -->
                       </div>
                       <!-- /End Section title -->
-
-                      <!-- GAP -->
-                      <div class="gap gap-18 d-none d-md-block"></div>
                     </div>
-                    <!-- /End col-lg-12 -->
                   </div>
                   <!-- /End row -->
                 </div>
@@ -179,14 +172,12 @@
             <!-- /End Section -->
             <!-- Section -->
 
-            <div class="main-section">
+            <div class="main-section" style="padding: 0px">
               <!-- container -->
               <div class="container gx-4">
                 <!-- row -->
                 <div class="row gx-36">
                   <!-- col-lg-8 -->
-                  <div class="col-lg-8 offset-lg-2"></div>
-                  <!-- /End col-lg-8 -->
 
                   <!-- col-lg-8 -->
                   <div class="col-lg-8 offset-lg-2 text-center">
@@ -250,7 +241,7 @@
             </div>
             <!-- /End Section -->
             <!-- Section -->
-            <div class="main-section pt-72 pb-72">
+            <div class="main-section pt-30 pb-30">
               <!-- container -->
               <div class="container gx-4">
                 <!-- row -->
