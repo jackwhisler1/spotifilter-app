@@ -163,10 +163,11 @@
                   <!-- /End col-lg-6 -->
                 </div>
                 <!-- /End row -->
-                <div v-if="!hasAccessToken()">
+                <div>
                   <a
                     class="btn btn-accent"
                     :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
+                    v-if="!hasToken"
                   >
                     Authorize Spotifilter
                   </a>
@@ -358,13 +359,14 @@ export default {
       filterAttribute: "",
       sortOrder: 1,
       sortAttribute: "",
+      hasToken: false,
       apiKey: process.env.VUE_APP_SPOTIFY_API,
     };
   },
-  created: function () {
-    this.hasAccessToken();
-  },
+  created: function () {},
   mounted: function () {
+    this.hasAccessToken();
+
     this.playlistsIndex();
   },
   // mounted: function () {
@@ -380,8 +382,9 @@ export default {
     },
     hasAccessToken: function () {
       axios.get(`/users/${localStorage.getItem("user_id")}`).then((response) => {
-        console.log(response.data.access_token);
-        return response.data.access_token;
+        if (response.data) {
+          this.hasToken = true;
+        }
       });
     },
     setSortAttribute: function (attribute) {
