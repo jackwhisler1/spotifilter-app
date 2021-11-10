@@ -13,10 +13,6 @@
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "mdb-ui-kit": "^3.9.0",
-<<<<<<< HEAD
-=======
-    "mdbvue": "1.6.0",
->>>>>>> 3859ed5 (adds styling for dropdown buttons)
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vue2-filters": "^0.13.0"

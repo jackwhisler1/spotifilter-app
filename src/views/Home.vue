@@ -319,12 +319,12 @@ export default {
       apiKey: process.env.VUE_APP_SPOTIFY_API,
     };
   },
-  created: function () {
+  mounted: function () {
     this.playlistsIndex();
   },
-  mounted: function () {
-    this.fetchRefreshedData();
-  },
+  // mounted: function () {
+  //   this.fetchRefreshedData();
+  // },
   methods: {
     playlistsIndex: function () {
       axios.get("/api/spotify/refresh");
@@ -346,14 +346,14 @@ export default {
         this.sortOrder = 1;
       }
     },
-    fetchRefreshedData: function () {
-      if (this.playlists.length === null) {
-        axios.get("/playlists").then((response) => {
-          console.log(response.data);
-          this.playlists = response.data;
-        });
-      }
-    },
+    // fetchRefreshedData: function () {
+    //   if (this.playlists.length === null) {
+    //     axios.get("/playlists").then((response) => {
+    //       console.log(response.data);
+    //       this.playlists = response.data;
+    //     });
+    //   }
+    // },
   },
 };
 </script>
