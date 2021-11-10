@@ -5,13 +5,18 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "vue-cli-service serve --open"
   },
   "dependencies": {
     "@smartweb/vue-flash-message": "^0.6.10",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "mdb-ui-kit": "^3.9.0",
+<<<<<<< HEAD
+=======
+    "mdbvue": "1.6.0",
+>>>>>>> 3859ed5 (adds styling for dropdown buttons)
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vue2-filters": "^0.13.0"
@@ -27,6 +32,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^2.2.1",
+    "vue-cli-plugin-mdb": "~2.1.0",
     "vue-template-compiler": "^2.6.11"
   }
 }

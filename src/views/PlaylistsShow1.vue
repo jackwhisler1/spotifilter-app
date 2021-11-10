@@ -37,17 +37,17 @@
     <!-- /End Breadcrumb section -->
 
     <div v-if="create_show">
-      <span>
+      <div class="col-lg-12 text-center">
         <!-- Choose filter -->
-        <div class="dropdown">
+        <span class="dropdown">
           <button
-            class="btn btn-accent btn-sm dropdown-toggle"
+            class="btn btn-light btn-sm dropdown-toggle"
             type="button"
             id="dropdownMenuButton"
             data-bs-toggle="dropdown"
             aria-haspopup="true"
-            ß
             aria-expanded="false"
+            style="margin: 10px"
           >
             Filter: {{ filter }}
           </button>
@@ -56,46 +56,53 @@
               <a class="dropdown-item" @click="filter = option" href="#">{{ option }}</a>
             </li>
           </ul>
-        </div>
+        </span>
 
-        <!-- 
-          
-        <option value="High Energy">High Energy</option>
-        <option value="Calm" selected>Calm</option>
-        <option value="Dance">Dance</option>
-        <option value="Faster Tempo">Faster Tempo</option>
-        <option value="Slower Tempo">Slower Tempo</option> -->
-
-        &nbsp;
         <!-- Choose number of songs -->
-        <label for="total-tracks-select">Number of tracks:</label>
-        <select required name="total-tracks" id="total-tracks-select" v-model="total_tracks">
-          <!-- <div "> -->
-          <option v-if="tracks.length < 10" value="minimum">Your playlist is too short!</option>
+        <span class="dropdown">
+          <button
+            class="btn btn-light btn-smdropdown-toggle"
+            type="button"
+            id="dropdownMenuButtonSongs"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            style="margin: 10px"
+          >
+            Length: {{ total_tracks }}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" role="menu">
+            <li v-if="tracks.length >= 10">
+              <a class="dropdown-item" @click="total_tracks = 10" href="#">10</a>
+            </li>
+            <li v-if="tracks.length >= 20">
+              <a class="dropdown-item" @click="total_tracks = 20" href="#">20</a>
+            </li>
+            <li v-if="tracks.length >= 30">
+              <a class="dropdown-item" @click="total_tracks = 30" href="#">30</a>
+            </li>
+            <li v-if="tracks.length >= 50">
+              <a class="dropdown-item" @click="total_tracks = 50" href="#">50</a>
+            </li>
+            <li v-if="tracks.length >= 75">
+              <a class="dropdown-item" @click="total_tracks = 75" href="#">75</a>
+            </li>
+            <li v-if="tracks.length >= 100">
+              <a class="dropdown-item" @click="total_tracks = 100" href="#">1000</a>
+            </li>
+          </ul>
+        </span>
 
-          <option v-if="tracks.length >= 10" value="10">10</option>
-
-          <option v-if="tracks.length >= 20" value="20">20</option>
-
-          <option v-if="tracks.length >= 30" value="30">30</option>
-
-          <option v-if="tracks.length >= 50" value="50">50</option>
-
-          <option v-if="tracks.length >= 75" value="75">75</option>
-
-          <option v-if="tracks.length >= 100" value="100">100</option>
-
-          <!-- <option value=""></option>
-        <option value=""></option> -->
-        </select>
-        &nbsp;
-        <label for="shared">Share:</label>
-        <button id="shared" @click="isShared = !isShared">
-          {{ isShared ? "ON" : "OFF" }}
+        <span class="btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-light btn-sm" style="margin: 10px">
+            <input type="checkbox" checked autocomplete="off" id="shared" @click="isShared = !isShared" />
+            Share on SpotiFilter
+          </label>
+        </span>
+        <button style="margin: 10px" class="btn btn-sm btn-accent" v-on:click="createPlaylist()">
+          Create Filtered Playlist
         </button>
-        &nbsp;
-        <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
-      </span>
+      </div>
     </div>
     <!-- Section -->
     <div class="main-section">
@@ -117,12 +124,7 @@
 
                     <p>{{ playlist.description }}</p>
                     <div v-if="playlistCreator === userId">
-                      <a
-                        href="#"
-                        class="btn btn-sm btn-rounded btn-outline-dark"
-                        data-bs-toggle="modal"
-                        data-bs-target="#modal-default"
-                      >
+                      <a href="#" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#modal-default">
                         Edit Details
                       </a>
                     </div>
@@ -190,12 +192,6 @@
           <div class="modal-body">
             <!-- row -->
             <div class="row gx-36 justify-content-center">
-              <!-- GAP -->
-              <div class="col-lg-12">
-                <div class="gap gap-36"></div>
-              </div>
-              <!-- /End GAP -->
-
               <!-- col-lg-12 -->
               <div class="col-lg-12">
                 <!-- Image block -->
@@ -203,8 +199,13 @@
                   <!-- Block container -->
                   <div class="main-block-container image-block-container">
                     <!-- Block header -->
-                    <div class="main-block-header image-block-header">
-                      <img src="/assets/images/subscribe.jpg" alt="Image" class="width-auto" />
+                    <div class="main-block-header">
+                      <img
+                        v-bind:src="playlist.images[0].url"
+                        v-bind:alt="playlist.id"
+                        class="img-thumbnail"
+                        style="max-width: 50%"
+                      />
                     </div>
                     <!-- /End Block header -->
                   </div>
@@ -257,19 +258,19 @@
                       <!-- /End Description -->
 
                       <!-- Submit button -->
-                      <div class="col-lg-12">
+                      <div class="col-lg-12 btn-custom">
                         <button
                           data-bs-dismiss="modal"
                           v-on:click="editPlaylist()"
                           type="submit"
-                          class="btn btn-accent btn-block"
+                          class="btn btn-accent btn-custom"
                         >
                           <span>Save</span>
                         </button>
                         <button
                           v-on:click="deletePlaylist()"
                           type="submit"
-                          class="btn btn-accent btn-block"
+                          class="btn btn-outline-danger"
                           data-bs-dismiss="modal"
                         >
                           <span>Delete</span>
@@ -309,7 +310,7 @@ export default {
       playlist: {},
       tracks: [],
       filterOptions: ["High Energy", "Calm", "Dance", "Faster Tempo", "Slower Tempo"],
-      filter: "",
+      filter: "High Energy",
       newPlaylistParams: {},
       total_tracks: 20,
       userId: "",
