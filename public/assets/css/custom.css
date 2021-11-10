@@ -50,3 +50,21 @@ div.modal-backdrop {
 .btn-outline-danger {
   border-color: rgba(226, 157, 157, 0.63);
 }
+
+.form-block-sign .form-block-sign-logo {
+  padding-bottom: 0px;
+}
+
+.label .form-control {
+  margin-top: 6px;
+}
+.label {
+  margin-bottom: 12px;
+}
+
+.form-block [type="submit"] {
+  margin-bottom: 4px;
+}
+.form-block-sign .form-block-sign-footer {
+  padding: 5px 30px 5px;
+}

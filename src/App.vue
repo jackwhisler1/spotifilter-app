@@ -122,92 +122,55 @@
                 <div class="container gx-4">
                   <!-- row -->
                   <div class="row gx-36">
-                    <!-- col-lg-2 -->
-                    <div class="col-lg-2">
-                      <!-- Image -->
-                      <div class="widget widget_image">
-                        <a href="index.html" title="Bason">
-                          <img src="/assets/images/spotifilter-logo-white.png" alt="Spotifilter" />
-                        </a>
-                      </div>
-                      <!-- /End Image -->
-                    </div>
-                    <!-- /End col-lg-2 -->
-
                     <!-- col-lg-4 -->
                     <div class="col-lg-4">
                       <!-- Text -->
                       <div class="widget widget_text light-color">
-                        <h6 class="widget-title font-weight-500"><span>About Bason</span></h6>
+                        <h6 class="widget-title font-weight-500"><span>About SpotiFilter</span></h6>
 
                         <div class="textwidget">
                           <p>
-                            Sed blandit quis tellus sit amet. Proin pharetra dolor non egestas pulvinar. Maecenas justo
-                            eros, sed sodales ut, vulputate viverra risus.
+                            This app was created using a Rails backend and a Vue.js frontend. I incorporated the theme
+                            "Bason" from wrapbootstrap.com. The project represents the culmination of my learning while
+                            attending the Actualize Coding Bootcamp and is the result many long nights. If you find any
+                            bugs, please email whisler1@gmail.com as I would be happy to learn how to fix them!
                           </p>
                         </div>
                       </div>
                       <!-- /End Text -->
                     </div>
-                    <!-- /End col-lg-4 -->
-
-                    <!-- col-lg-2 -->
-                    <div class="col-lg-2">
-                      <!-- Navigation Menu -->
-                      <div class="widget widget_nav_menu light-color">
-                        <h6 class="widget-title font-weight-500"><span>Company</span></h6>
-
-                        <ul>
-                          <li><a href="#">About us</a></li>
-                          <li><a href="#">Portfolio</a></li>
-                          <li><a href="#">Shop</a></li>
-                          <li><a href="#">Contact us</a></li>
-                        </ul>
-                      </div>
-                      <!-- /End Navigation Menu -->
-                    </div>
-                    <!-- /End col-lg-2 -->
-
-                    <!-- col-lg-2 -->
-                    <div class="col-lg-2">
-                      <!-- Navigation Menu -->
-                      <div class="widget widget_nav_menu light-color">
-                        <h6 class="widget-title font-weight-500"><span>Account</span></h6>
-
-                        <ul>
-                          <li><a href="#">Sign in</a></li>
-                          <li><a href="#">Sign up</a></li>
-                          <li><a href="#">Reset password</a></li>
-                          <li><a href="#">View account</a></li>
-                        </ul>
-                      </div>
-                      <!-- /End Navigation Menu -->
-                    </div>
-                    <!-- /End col-lg-2 -->
-
-                    <!-- col-lg-2 -->
-                    <div class="col-lg-2">
-                      <!-- Text -->
+                    <div class="col-lg-4">
                       <div class="widget widget_text light-color">
-                        <h6 class="widget-title font-weight-500"><span>Contact us</span></h6>
-
-                        <div class="textwidget">
-                          <p>
-                            <b>Email:</b>
-                            <br />
-                            <a href="mailto:support@example.com">support@example.com</a>
-                          </p>
-
-                          <p>
-                            <b>Phone:</b>
-                            <br />
-                            <a href="tel:+11234567890">+1 123 456-7890</a>
-                          </p>
+                        <h6 class="widget-title font-weight-500"><span>Contact</span></h6>
+                        <!-- Block -->
+                        <div class="main-block">
+                          <!-- Block container -->
+                          <div class="main-block-container">
+                            <!-- Block body -->
+                            <div class="main-block-body">
+                              <!-- Block content -->
+                              <div class="main-block-content">
+                                <ul class="icon-list">
+                                  <li>
+                                    <i class="fas fa-home"></i>
+                                    Chicago
+                                  </li>
+                                  <li>
+                                    <i class="fas fa-envelope"></i>
+                                    whisler1@gmail.com
+                                  </li>
+                                </ul>
+                              </div>
+                              <!-- /End Block content -->
+                            </div>
+                            <!--/End Block body -->
+                          </div>
+                          <!-- /End Block container -->
                         </div>
+                        <!-- /End Block -->
                       </div>
-                      <!-- /End Text -->
+                      <!-- /End col-lg-4 -->
                     </div>
-                    <!-- /End col-lg-2 -->
                   </div>
                   <!-- /End row -->
                 </div>
@@ -216,62 +179,6 @@
               <!-- /End Section -->
             </div>
             <!-- /End footer top -->
-
-            <!-- footer copyright -->
-            <div class="footer-section-copyright">
-              <!-- Section -->
-              <div class="main-section">
-                <!-- container -->
-                <div class="container gx-4">
-                  <!-- row -->
-                  <div class="row gx-36 align-items-center">
-                    <!-- col-lg-6 -->
-                    <div class="col-lg-6">
-                      <!-- Content -->
-                      <div class="footer-section-copyright-content light-color text-center text-lg-start">
-                        <p>
-                          &copy;
-                          <span class="current-year">2021</span>
-                          designed &amp; developed by
-                          <a href="#" title="Graphicfort">Graphicfort</a>
-                          , all rights reserved.
-                        </p>
-                      </div>
-                      <!-- /End Content -->
-                    </div>
-                    <!-- /End col-lg-6 -->
-
-                    <!-- col-lg-6 -->
-                    <div class="col-lg-6">
-                      <!-- Content -->
-                      <div class="footer-section-copyright-content light-color text-center text-lg-end">
-                        <!-- Nav menu -->
-                        <nav class="nav-menu-block">
-                          <ul>
-                            <li>
-                              <a href="#" title="Policy Privacy"><span>Policy Privacy</span></a>
-                            </li>
-                            <li>
-                              <a href="#" title="Cookie Policy"><span>Cookie Policy</span></a>
-                            </li>
-                            <li>
-                              <a href="#" title="Contact"><span>Contact</span></a>
-                            </li>
-                          </ul>
-                        </nav>
-                        <!-- /End Nav menu -->
-                      </div>
-                      <!-- /End Content -->
-                    </div>
-                    <!-- /End col-lg-6 -->
-                  </div>
-                  <!-- /End row -->
-                </div>
-                <!-- /End container -->
-              </div>
-              <!-- /End Section -->
-            </div>
-            <!-- /End footer copyright -->
           </div>
           <!-- /End footer container -->
         </footer>

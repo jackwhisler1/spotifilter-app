@@ -79,28 +79,6 @@
 
                       <!-- GAP -->
                       <div class="gap gap-18 d-none d-md-block"></div>
-
-                      <!-- Section title -->
-                      <div
-                        class="section-title section-title-intro text-center light-color mb-0"
-                        data-animation="animate__zoomIn"
-                        data-animation-delay="400"
-                      >
-                        <!-- Section title container -->
-                        <div class="section-title-container">
-                          <!-- Section title body -->
-                          <div class="section-title-body">
-                            <!-- Block content -->
-                            <div class="section-title-content">
-                              <p><a href="#" class="btn btn-light btn-lg btn-round">DISCOVER MORE</a></p>
-                            </div>
-                            <!-- /End Block content -->
-                          </div>
-                          <!--/End Section title body -->
-                        </div>
-                        <!-- /End Section title container -->
-                      </div>
-                      <!-- /End Section title -->
                     </div>
                     <!-- /End col-lg-12 -->
                   </div>
@@ -113,6 +91,93 @@
             <!-- Section -->
             <div class="main-section">
               <!-- container -->
+              <div class="container gx-4 text-center">
+                <!-- row -->
+                <div class="row gx-36">
+                  <!-- col-lg-6 -->
+                  <div class="col-lg-6">
+                    <!-- Text block -->
+                    <div class="main-block text-block">
+                      <!-- Block container -->
+                      <div class="main-block-container text-block-container">
+                        <!-- Block body -->
+                        <div class="main-block-body text-block-body">
+                          <!-- Block heading -->
+                          <div class="main-block-heading text-block-heading">
+                            <h4>About SpotiFilter</h4>
+                          </div>
+                          <!-- /End Block heading -->
+
+                          <!-- Block content -->
+                          <div class="main-block-content text-block-content">
+                            <p>
+                              As a Spotify user with playlists often surpassing hundreds of songs, I wanted a way to
+                              sort those monstrous playlists to fit my mood. SpotiFilter is an app that uses Spotify's
+                              deeply stored track data to sort and create new playlists based on the selected filter.
+                            </p>
+                          </div>
+                          <!-- /End Block content -->
+                        </div>
+                        <!--/End Block body -->
+                      </div>
+                      <!-- /End Block container -->
+                    </div>
+                    <!-- /End Text block -->
+
+                    <!-- GAP -->
+                    <div class="gap gap-18 d-lg-none"></div>
+                  </div>
+                  <!-- /End col-lg-6 -->
+
+                  <!-- col-lg-6 -->
+                  <div class="col-lg-6">
+                    <!-- Text block -->
+                    <div class="main-block text-block">
+                      <!-- Block container -->
+                      <div class="main-block-container text-block-container">
+                        <!-- Block body -->
+                        <div class="main-block-body text-block-body">
+                          <!-- Block heading -->
+                          <div class="main-block-heading text-block-heading">
+                            <h4>How It Works</h4>
+                          </div>
+                          <!-- /End Block heading -->
+
+                          <!-- Block content -->
+                          <div class="main-block-content text-block-content">
+                            <p>
+                              After you authorize your account with Spotify, you will be able to select a playlist to
+                              work with. If you choose a high energy filter, SpotiFilter will use your playlist data to
+                              generate a new playlist of the desired length with just the most energetic songs from your
+                              playlist.
+                            </p>
+                          </div>
+                          <!-- /End Block content -->
+                        </div>
+                        <!--/End Block body -->
+                      </div>
+                      <!-- /End Block container -->
+                    </div>
+                    <!-- /End Text block -->
+                  </div>
+                  <!-- /End col-lg-6 -->
+                </div>
+                <!-- /End row -->
+                <a
+                  class="btn btn-accent"
+                  :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
+                >
+                  Authorize Spotifilter
+                </a>
+              </div>
+
+              <!-- /End container -->
+            </div>
+            <!-- /End Section -->
+            <!-- Section -->
+
+            <div class="main-section">
+              <!-- container -->
               <div class="container gx-4">
                 <!-- row -->
                 <div class="row gx-36">
@@ -121,7 +186,7 @@
                   <!-- /End col-lg-8 -->
 
                   <!-- col-lg-8 -->
-                  <div class="col-lg-8 offset-lg-2">
+                  <div class="col-lg-8 offset-lg-2 text-center">
                     <!-- Search form -->
                     <div class="form-block form-block-search form-block-search-layout-4" clear-search>
                       <!-- Form container -->
@@ -244,15 +309,15 @@
                       <!-- /End Loop -->
 
                       <!-- Pagination -->
-                      <div class="row gx-36">
-                        <!-- col-lg-12 -->
-                        <div class="col-lg-12">
+                      <!-- <div class="row gx-36"> -->
+                      <!-- col-lg-12 -->
+                      <!-- <div class="col-lg-12">
                           <nav aria-label="Page navigation" class="pagination-block">
                             <a href="#" class="btn btn-accent">LOAD MORE</a>
                           </nav>
-                        </div>
-                        <!-- /End col-lg-12 -->
-                      </div>
+                        </div> -->
+                      <!-- /End col-lg-12 -->
+                      <!-- </div> -->
                       <!-- /End Pagination -->
                     </div>
                     <!-- /End Portfolio wrapper -->
@@ -274,31 +339,6 @@
     <!-- /End Page body -->
 
     <!--  -->
-    <!-- My Code -->
-    <!-- <p>Select a playlist to apply a filter.</p> -->
-    <div>
-      <!-- <h2>Please authorize to allow Spotifiliter to use playlist information.</h2> -->
-      <a
-        :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
-      >
-        <button>Authorize Spotifilter</button>
-      </a>
-    </div>
-    <hr width="80%" />
-    <div v-if="isLoggedIn()">
-      <!-- <input v-model="filterAttribute" type="text" /> -->
-      <!-- <div v-for="playlist in filterBy(playlists, filterAttribute)" v-bind:key="playlist.id">
-        <h2>{{ playlist.name }}</h2>
-        <div v-if="playlist.images">
-          <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
-        </div>
-        <p>Total Tracks: {{ playlist.tracks.total }}</p>
-        <router-link :to="`/playlists/${playlist.id}`">
-          <button>Select</button>
-        </router-link>
-        <hr size="1" noshade width="50%" />
-      </div> -->
-    </div>
   </div>
 </template>
 
