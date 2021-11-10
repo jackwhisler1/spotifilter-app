@@ -322,15 +322,15 @@ export default {
   created: function () {
     this.playlistsIndex();
   },
+  mounted: function () {
+    this.fetchRefreshedData();
+  },
   methods: {
     playlistsIndex: function () {
+      axios.get("/api/spotify/refresh");
       axios.get("/playlists").then((response) => {
         console.log(response.data);
         this.playlists = response.data;
-
-        if (this.playlists === null) {
-          axios.get("/api/spotify/refresh").then((response) => console.log(response.data));
-        }
       });
     },
     isLoggedIn: function () {
@@ -346,7 +346,14 @@ export default {
         this.sortOrder = 1;
       }
     },
-    getRefreshedToken: function () {},
+    fetchRefreshedData: function () {
+      if (this.playlists.length === null) {
+        axios.get("/playlists").then((response) => {
+          console.log(response.data);
+          this.playlists = response.data;
+        });
+      }
+    },
   },
 };
 </script>

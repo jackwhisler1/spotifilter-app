@@ -27,50 +27,6 @@
               <p class="breadcrumb-sub-heading">{{ playlist.description }}</p>
             </div>
             <!-- /End Title -->
-
-            <!-- Breadcrumb -->
-            <nav class="breadcrumb-nav">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a
-                    href="#"
-                    class="home"
-                    title="Edit Details"
-                    v-if="playlistCreator === userId"
-                    v-on:click="editPlaylist()"
-                  >
-                    >
-                    <span>
-                      Edit Details
-                      <i class="fas fa-cog"></i>
-                    </span>
-                  </a>
-                </li>
-                <li class="breadcrumb-item">
-                  <a
-                    href="#"
-                    class="home"
-                    title="Delete"
-                    v-if="playlistCreator === userId"
-                    v-on:click="deletePlaylist()"
-                  >
-                    >
-                    <FlashMessage></FlashMessage>
-
-                    <span>
-                      Delete
-                      <i class="fas fa-trash"></i>
-                    </span>
-                  </a>
-                </li>
-                <li><span></span></li>
-              </ol>
-            </nav>
-            <!-- Block footer -->
-            <div class="main-block-footer text-block-footer"></div>
-
-            <!-- /End Block footer -->
-            <!-- /End Breadcrumb -->
           </div>
           <!-- /End row -->
         </div>
@@ -123,33 +79,6 @@
         <button v-on:click="createPlaylist()">Create Filtered Playlist</button>
       </span>
     </div>
-
-    <button v-if="playlistCreator === userId" v-on:click="deletePlaylist()">
-      Delete Playlist
-      <FlashMessage></FlashMessage>
-    </button>
-    &nbsp;
-    <button v-if="playlistCreator === userId" v-on:click="isShow = !isShow">Edit Playlist Details</button>
-    <form v-if="isShow" method="dialog">
-      <div>
-        Playlist Title
-        <input type="text" v-model="editPlaylistParams.name" />
-      </div>
-      <div>
-        Description:
-        <input type="text" v-model="editPlaylistParams.description" />
-      </div>
-      <!-- <label for="shared">Share:</label>
-        <button id="shared" @click="isShared = !isShared">
-          {{ isShared ? "ON" : "OFF" }}
-        </button> -->
-      <button v-on:click="isShow = !isShow">Cancel</button>
-      <button v-on:click="editPlaylist()">Submit</button>
-    </form>
-
-    <!--  -->
-    <!--  -->
-    <!--  -->
     <!-- Section -->
     <div class="main-section">
       <!-- container -->
@@ -167,10 +96,13 @@
                   <!-- Section title heading -->
                   <div class="section-title-heading">
                     <h2>{{ playlist.name }}</h2>
-                    <a href="#" class="btn btn-accent btn-sm" data-bs-toggle="modal" data-bs-target="#modal-default">
-                      LAUNCH MODAL
-                    </a>
+
                     <p>{{ playlist.description }}</p>
+                    <div v-if="playlistCreator === userId">
+                      <a href="#" class="btn btn-accent btn-sm" data-bs-toggle="modal" data-bs-target="#modal-default">
+                        Edit Details
+                      </a>
+                    </div>
                   </div>
                   <!-- /End Section title heading -->
                 </div>
@@ -268,38 +200,55 @@
               <!-- col-lg-10 -->
               <div class="col-lg-10">
                 <!-- Mailchimp form -->
-                <div class="form-block form-block-mailchimp">
+                <div class="form-block">
                   <!-- Form container -->
                   <div class="form-block-container">
                     <!-- Form -->
-                    <form method="POST" action="#" class="row">
-                      <!-- First name -->
+                    <form class="row">
+                      <!-- Title -->
                       <div class="col-lg-12">
                         <label class="label" aria-label="Playlist Title">
                           <input
                             class="form-control mt-0"
                             type="text"
-                            name="FNAME"
-                            :placeholder="editPlaylistParams.name"
+                            name="Title"
+                            placeholder="Title"
+                            v-model="editPlaylistParams.name"
                           />
                         </label>
                       </div>
-                      <!-- /End First name -->
+                      <!-- /End Title -->
 
-                      <!-- Email address -->
+                      <!-- Description -->
                       <div class="col-lg-12">
-                        <label class="label" aria-label="Email address">
-                          <input class="form-control mt-0" type="email" name="EMAIL" placeholder="Email address" />
+                        <label class="label" aria-label="Description">
+                          <input
+                            class="form-control mt-0"
+                            type="text"
+                            name="Description"
+                            placeholder="Description"
+                            v-model="editPlaylistParams.description"
+                          />
                         </label>
                       </div>
-                      <!-- /End Email address -->
+                      <!-- /End Description -->
 
                       <!-- Submit button -->
                       <div class="col-lg-12">
-                        <button type="submit" class="btn btn-accent btn-block">
+                        <button
+                          data-bs-dismiss="modal"
+                          v-on:click="editPlaylist()"
+                          type="submit"
+                          class="btn btn-accent btn-block"
+                        >
                           <span>Save</span>
                         </button>
-                        <button type="submit" class="btn btn-accent btn-block">
+                        <button
+                          v-on:click="deletePlaylist()"
+                          type="submit"
+                          class="btn btn-accent btn-block"
+                          data-bs-dismiss="modal"
+                        >
                           <span>Delete</span>
                         </button>
                       </div>
@@ -415,13 +364,8 @@ export default {
     },
     deletePlaylist: function () {
       if (confirm("Do you really want to delete this playlist?")) {
-        axios.delete(`/playlists/${this.$route.params.id}`).then(
-          this.flashMessage.success({
-            title: "Playlist Deleted",
-            time: 1200,
-          })
-        );
-        setTimeout(() => this.$router.push("/"), 1200);
+        axios.delete(`/playlists/${this.$route.params.id}`);
+        this.$router.push("/");
       }
     },
     getUserId: function () {
