@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="shared-playlists">
     <!-- Page body
                 ============================================================ -->
     <div id="page-body" class="page-body">
@@ -23,7 +23,7 @@
                       <!-- Loop -->
                       <div class="row gx-36 gy-0 row-cols-1 grid-wrapper">
                         <!-- Grid item -->
-                        <div class="grid-item">
+                        <div v-for="playlist in shared_playlists" v-bind:key="playlist.id" class="grid-item">
                           <!-- Post -->
                           <article class="main-block blog-block format-standard">
                             <!-- Block container -->
@@ -31,7 +31,7 @@
                               <!-- Block header -->
                               <div class="main-block-header blog-block-header">
                                 <a href="#">
-                                  <img src="assets/images/blog/001-503x335.jpg" alt="Article image" />
+                                  <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
                                 </a>
                               </div>
                               <!-- /End Block header -->
@@ -41,236 +41,58 @@
                                 <!-- Block heading -->
                                 <div class="main-block-heading blog-block-heading">
                                   <h2 class="h5 title">
-                                    <a href="#">You must do the things you think you can't do</a>
+                                    {{ playlist.name }}
                                   </h2>
 
                                   <ul class="meta-block">
                                     <li class="meta-block-author">
-                                      <span><a href="#">Admin</a></span>
-                                    </li>
-                                    <li class="meta-block-date">
-                                      <span><a href="#">May 17, 2021</a></span>
-                                    </li>
-                                    <li class="meta-block-category">
-                                      <span><a href="#">Standard</a></span>
-                                    </li>
-                                    <li class="meta-block-comments">
-                                      <span><a href="#">No Comments</a></span>
-                                    </li>
-                                    <li class="meta-block-views">
                                       <span>
-                                        <i class="far fa-eye"></i>
-                                        20
+                                        {{ playlist.description }}
                                       </span>
                                     </li>
                                   </ul>
+                                  <div
+                                    class="
+                                      hr-divider hr-divider-layout-3
+                                      heading-color
+                                      hr-divider-fullwidth hr-divider-1px-border
+                                    "
+                                  ></div>
                                 </div>
                                 <!-- /End Block heading -->
 
                                 <!-- Block content -->
                                 <div class="main-block-content blog-block-content">
-                                  <p>
-                                    Donec convallis eleifend augue, sed feugiat sem egestas ut. Suspendisse massa augue,
-                                    eget et ornare sapien dictum eu. Fusce ullamcorper iaculis neque quis laoreet. Sed
-                                    rutrum magna ut nulla venenatis, nec eu commodo purus egestas. Suspendisse tempus
-                                    libero...
-                                  </p>
-                                </div>
-                                <!-- /End Block content -->
-
-                                <!-- Block footer -->
-                                <div class="main-block-footer blog-block-footer">
-                                  <a href="#" class="btn btn-accent btn-sm">
-                                    <span>READ MORE</span>
-                                  </a>
-                                  <a href="#" class="read-more-link font-size-12">
-                                    <i class="fas fa-plus"></i>
-                                    READ MORE
-                                  </a>
-                                </div>
-                                <!-- /End Block footer -->
-                              </div>
-                              <!--/End Block body -->
-                            </div>
-                            <!-- /End Block container -->
-                          </article>
-                          <!-- /End Post -->
-                        </div>
-                        <!-- /End Grid item -->
-
-                        <!-- Grid item -->
-                        <div class="grid-item">
-                          <!-- Post -->
-                          <article class="main-block blog-block format-standard">
-                            <!-- Block container -->
-                            <div class="main-block-container blog-block-container">
-                              <!-- Block header -->
-                              <div class="main-block-header blog-block-header">
-                                <a href="#">
-                                  <img src="assets/images/blog/002-503x335.jpg" alt="Article image" />
-                                </a>
-                              </div>
-                              <!-- /End Block header -->
-
-                              <!-- Block body -->
-                              <div class="main-block-body blog-block-body">
-                                <!-- Block heading -->
-                                <div class="main-block-heading blog-block-heading">
-                                  <h2 class="h5 title">
-                                    <a href="#">ideas shape the course of history</a>
-                                  </h2>
-
-                                  <ul class="meta-block">
-                                    <li class="meta-block-author">
-                                      <span><a href="#">Admin</a></span>
+                                  <ul class="icon-list ordered-list grey-2-color-border">
+                                    Sample:
+                                    <li>
+                                      "{{ playlist.tracks.items[0].track.name }}" by
+                                      {{ playlist.tracks.items[0].track.artists[0].name }}
                                     </li>
-                                    <li class="meta-block-date">
-                                      <span><a href="#">May 17, 2021</a></span>
+                                    <li>
+                                      "{{ playlist.tracks.items[1].track.name }}" by
+                                      {{ playlist.tracks.items[1].track.artists[0].name }}
                                     </li>
-                                    <li class="meta-block-category">
-                                      <span><a href="#">Standard</a></span>
+                                    <li>
+                                      "{{ playlist.tracks.items[2].track.name }}" by
+                                      {{ playlist.tracks.items[2].track.artists[0].name }}
                                     </li>
-                                    <li class="meta-block-comments">
-                                      <span><a href="#">No Comments</a></span>
-                                    </li>
-                                    <li class="meta-block-views">
-                                      <span>
-                                        <i class="far fa-eye"></i>
-                                        20
-                                      </span>
+                                    <li>
+                                      "{{ playlist.tracks.items[3].track.name }}" by
+                                      {{ playlist.tracks.items[3].track.artists[0].name }}
                                     </li>
                                   </ul>
                                 </div>
-                                <!-- /End Block heading -->
-
-                                <!-- Block content -->
-                                <div class="main-block-content blog-block-content">
-                                  <p>
-                                    Donec convallis eleifend augue, sed feugiat sem egestas ut. Suspendisse massa augue,
-                                    eget et ornare sapien dictum eu. Fusce ullamcorper iaculis neque quis laoreet. Sed
-                                    rutrum magna ut nulla venenatis, nec eu commodo purus egestas. Suspendisse tempus
-                                    libero...
-                                  </p>
-                                </div>
                                 <!-- /End Block content -->
 
                                 <!-- Block footer -->
                                 <div class="main-block-footer blog-block-footer">
-                                  <a href="#" class="btn btn-accent btn-sm">
-                                    <span>READ MORE</span>
-                                  </a>
-                                  <a href="#" class="read-more-link font-size-12">
-                                    <i class="fas fa-plus"></i>
-                                    READ MORE
-                                  </a>
-                                </div>
-                                <!-- /End Block footer -->
-                              </div>
-                              <!--/End Block body -->
-                            </div>
-                            <!-- /End Block container -->
-                          </article>
-                          <!-- /End Post -->
-                        </div>
-                        <!-- /End Grid item -->
-
-                        <!-- Grid item -->
-                        <div class="grid-item">
-                          <!-- Post -->
-                          <article class="main-block blog-block format-quote">
-                            <!-- Block container -->
-                            <div class="main-block-container blog-block-container">
-                              <!-- Block body -->
-                              <div class="main-block-body blog-block-body">
-                                <!-- Block content -->
-                                <div class="main-block-content blog-block-content">
-                                  <blockquote class="boxed-block-2y white-color-bg grey-2-color-border text-center">
-                                    <a href="#" class="h3 post-format-content-link">
-                                      <i class="fas fa-quote-right accent-color"></i>
+                                  <router-link :to="`/playlists/${playlist.id}`">
+                                    <a href="#" class="read-more-link font-size-14">
+                                      <i class="fas fa-arrow-right"></i>
+                                      Select
                                     </a>
-
-                                    <h2 class="h5 title">
-                                      We're here to put a dent in universe. Otherwise why else even be here ?
-                                    </h2>
-
-                                    <cite>- Steve Jobs</cite>
-                                  </blockquote>
-                                </div>
-                                <!-- /End Block content -->
-                              </div>
-                              <!--/End Block body -->
-                            </div>
-                            <!-- /End Block container -->
-                          </article>
-                          <!-- /End Post -->
-                        </div>
-                        <!-- /End Grid item -->
-
-                        <!-- Grid item -->
-                        <div class="grid-item">
-                          <!-- Post -->
-                          <article class="main-block blog-block format-standard">
-                            <!-- Block container -->
-                            <div class="main-block-container blog-block-container">
-                              <!-- Block header -->
-                              <div class="main-block-header blog-block-header">
-                                <a href="#">
-                                  <img src="assets/images/blog/004-503x335.jpg" alt="Article image" />
-                                </a>
-                              </div>
-                              <!-- /End Block header -->
-
-                              <!-- Block body -->
-                              <div class="main-block-body blog-block-body">
-                                <!-- Block heading -->
-                                <div class="main-block-heading blog-block-heading">
-                                  <h2 class="h5 title">
-                                    <a href="#">a great idea can make difference</a>
-                                  </h2>
-
-                                  <ul class="meta-block">
-                                    <li class="meta-block-author">
-                                      <span><a href="#">Admin</a></span>
-                                    </li>
-                                    <li class="meta-block-date">
-                                      <span><a href="#">May 17, 2021</a></span>
-                                    </li>
-                                    <li class="meta-block-category">
-                                      <span><a href="#">Standard</a></span>
-                                    </li>
-                                    <li class="meta-block-comments">
-                                      <span><a href="#">No Comments</a></span>
-                                    </li>
-                                    <li class="meta-block-views">
-                                      <span>
-                                        <i class="far fa-eye"></i>
-                                        20
-                                      </span>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <!-- /End Block heading -->
-
-                                <!-- Block content -->
-                                <div class="main-block-content blog-block-content">
-                                  <p>
-                                    Donec convallis eleifend augue, sed feugiat sem egestas ut. Suspendisse massa augue,
-                                    eget et ornare sapien dictum eu. Fusce ullamcorper iaculis neque quis laoreet. Sed
-                                    rutrum magna ut nulla venenatis, nec eu commodo purus egestas. Suspendisse tempus
-                                    libero...
-                                  </p>
-                                </div>
-                                <!-- /End Block content -->
-
-                                <!-- Block footer -->
-                                <div class="main-block-footer blog-block-footer">
-                                  <a href="#" class="btn btn-accent btn-sm">
-                                    <span>READ MORE</span>
-                                  </a>
-                                  <a href="#" class="read-more-link font-size-12">
-                                    <i class="fas fa-plus"></i>
-                                    READ MORE
-                                  </a>
+                                  </router-link>
                                 </div>
                                 <!-- /End Block footer -->
                               </div>
@@ -279,195 +101,9 @@
                             <!-- /End Block container -->
                           </article>
                           <!-- /End Post -->
-                        </div>
-                        <!-- /End Grid item -->
-
-                        <!-- Grid item -->
-                        <div class="grid-item">
-                          <!-- Post -->
-                          <article class="main-block blog-block format-standard">
-                            <!-- Block container -->
-                            <div class="main-block-container blog-block-container">
-                              <!-- Block header -->
-                              <div class="main-block-header blog-block-header">
-                                <a href="#">
-                                  <img src="assets/images/blog/005-503x335.jpg" alt="Article image" />
-                                </a>
-                              </div>
-                              <!-- /End Block header -->
-
-                              <!-- Block body -->
-                              <div class="main-block-body blog-block-body">
-                                <!-- Block heading -->
-                                <div class="main-block-heading blog-block-heading">
-                                  <h2 class="h5 title">
-                                    <a href="#">if opportunity doesn't knock, build a door</a>
-                                  </h2>
-
-                                  <ul class="meta-block">
-                                    <li class="meta-block-author">
-                                      <span><a href="#">Admin</a></span>
-                                    </li>
-                                    <li class="meta-block-date">
-                                      <span><a href="#">May 17, 2021</a></span>
-                                    </li>
-                                    <li class="meta-block-category">
-                                      <span><a href="#">Standard</a></span>
-                                    </li>
-                                    <li class="meta-block-comments">
-                                      <span><a href="#">No Comments</a></span>
-                                    </li>
-                                    <li class="meta-block-views">
-                                      <span>
-                                        <i class="far fa-eye"></i>
-                                        20
-                                      </span>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <!-- /End Block heading -->
-
-                                <!-- Block content -->
-                                <div class="main-block-content blog-block-content">
-                                  <p>
-                                    Donec convallis eleifend augue, sed feugiat sem egestas ut. Suspendisse massa augue,
-                                    eget et ornare sapien dictum eu. Fusce ullamcorper iaculis neque quis laoreet. Sed
-                                    rutrum magna ut nulla venenatis, nec eu commodo purus egestas. Suspendisse tempus
-                                    libero...
-                                  </p>
-                                </div>
-                                <!-- /End Block content -->
-
-                                <!-- Block footer -->
-                                <div class="main-block-footer blog-block-footer">
-                                  <a href="#" class="btn btn-accent btn-sm">
-                                    <span>READ MORE</span>
-                                  </a>
-                                  <a href="#" class="read-more-link font-size-12">
-                                    <i class="fas fa-plus"></i>
-                                    READ MORE
-                                  </a>
-                                </div>
-                                <!-- /End Block footer -->
-                              </div>
-                              <!--/End Block body -->
-                            </div>
-                            <!-- /End Block container -->
-                          </article>
-                          <!-- /End Post -->
-                        </div>
-                        <!-- /End Grid item -->
-
-                        <!-- Grid item -->
-                        <div class="grid-item">
-                          <!-- Post -->
-                          <article class="main-block blog-block format-link">
-                            <!-- Block container -->
-                            <div class="main-block-container blog-block-container">
-                              <!-- Block body -->
-                              <div class="main-block-body blog-block-body">
-                                <!-- Block content -->
-                                <div class="main-block-content blog-block-content">
-                                  <blockquote class="boxed-block-2y white-color-bg grey-2-color-border text-center">
-                                    <a href="#" class="h3 post-format-content-link">
-                                      <i class="fas fa-link accent-color"></i>
-                                    </a>
-
-                                    <h2 class="h5 title">
-                                      <a href="#" target="_blank" rel="noopener">
-                                        Creative HTML5 templates &amp; WordPress themes
-                                      </a>
-                                    </h2>
-
-                                    <cite>
-                                      -
-                                      <a href="#">Check our Portfolio</a>
-                                    </cite>
-                                  </blockquote>
-                                </div>
-                                <!-- /End Block content -->
-                              </div>
-                              <!--/End Block body -->
-                            </div>
-                            <!-- /End Block container -->
-                          </article>
-                          <!-- /End Post -->
-                        </div>
-                        <!-- /End Grid item -->
-
-                        <!-- Grid item -->
-                        <div class="grid-item">
-                          <!-- Post -->
-                          <article class="main-block blog-block format-standard">
-                            <!-- Block container -->
-                            <div class="main-block-container blog-block-container">
-                              <!-- Block header -->
-                              <div class="main-block-header blog-block-header">
-                                <a href="#">
-                                  <img src="assets/images/blog/007-503x335.jpg" alt="Article image" />
-                                </a>
-                              </div>
-                              <!-- /End Block header -->
-
-                              <!-- Block body -->
-                              <div class="main-block-body blog-block-body">
-                                <!-- Block heading -->
-                                <div class="main-block-heading blog-block-heading">
-                                  <h2 class="h5 title">
-                                    <a href="#">Your big opportunity may be right where you are now</a>
-                                  </h2>
-
-                                  <ul class="meta-block">
-                                    <li class="meta-block-author">
-                                      <span><a href="#">Admin</a></span>
-                                    </li>
-                                    <li class="meta-block-date">
-                                      <span><a href="#">May 17, 2021</a></span>
-                                    </li>
-                                    <li class="meta-block-category">
-                                      <span><a href="#">Standard</a></span>
-                                    </li>
-                                    <li class="meta-block-comments">
-                                      <span><a href="#">No Comments</a></span>
-                                    </li>
-                                    <li class="meta-block-views">
-                                      <span>
-                                        <i class="far fa-eye"></i>
-                                        20
-                                      </span>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <!-- /End Block heading -->
-
-                                <!-- Block content -->
-                                <div class="main-block-content blog-block-content">
-                                  <p>
-                                    Donec convallis eleifend augue, sed feugiat sem egestas ut. Suspendisse massa augue,
-                                    eget et ornare sapien dictum eu. Fusce ullamcorper iaculis neque quis laoreet. Sed
-                                    rutrum magna ut nulla venenatis, nec eu commodo purus egestas. Suspendisse tempus
-                                    libero...
-                                  </p>
-                                </div>
-                                <!-- /End Block content -->
-
-                                <!-- Block footer -->
-                                <div class="main-block-footer blog-block-footer">
-                                  <a href="#" class="btn btn-accent btn-sm">
-                                    <span>READ MORE</span>
-                                  </a>
-                                  <a href="#" class="read-more-link font-size-12">
-                                    <i class="fas fa-plus"></i>
-                                    READ MORE
-                                  </a>
-                                </div>
-                                <!-- /End Block footer -->
-                              </div>
-                              <!--/End Block body -->
-                            </div>
-                            <!-- /End Block container -->
-                          </article>
-                          <!-- /End Post -->
+                          <div
+                            class="hr-divider hr-divider-layout-5 header-color text-center hr-divider-fullwidth"
+                          ></div>
                         </div>
                         <!-- /End Grid item -->
                       </div>

@@ -20,15 +20,16 @@ const routes = [
     component: Home,
   },
   {
+    path: "/playlists/shared",
+    name: "shared-playlists",
+    component: SharedPlaylists,
+  },
+  {
     path: "/playlists/:id",
     name: "playlists-show",
     component: PlaylistsShow1,
   },
-  {
-    path: "/shared_playlists",
-    name: "shared-playlists",
-    component: SharedPlaylists,
-  },
+
   { path: "/signup", name: "signup", component: Signup },
   { path: "/login", name: "login", component: Login },
   { path: "/logout", name: "logout", component: Logout },

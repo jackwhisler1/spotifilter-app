@@ -48,7 +48,7 @@
                     </li>
                     <!-- Shared Playlists -->
                     <li class="nav-item">
-                      <router-link class="nav-link" to="/shared_playlists"><span>Shared Playlists</span></router-link>
+                      <router-link class="nav-link" to="/playlists/shared"><span>Shared Playlists</span></router-link>
                     </li>
                     <!-- Not Logged In -->
                     <li v-if="!isLoggedIn()" class="nav-item">
