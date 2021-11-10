@@ -39,15 +39,33 @@
     <div v-if="create_show">
       <span>
         <!-- Choose filter -->
-        <label for="filter-select">Choose a filter:</label>
-        <select required name="filters" id="filter-select" v-model="filter">
-          <option value="High Energy">High Energy</option>
-          <option value="Calm" selected>Calm</option>
-          <option value="Dance">Dance</option>
-          <option value="Faster Tempo">Faster Tempo</option>
-          <option value="Slower Tempo">Slower Tempo</option>
+        <div class="dropdown">
+          <button
+            class="btn btn-accent btn-sm dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            ß
+            aria-expanded="false"
           >
-        </select>
+            Filter: {{ filter }}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" role="menu">
+            <li v-for="option in filterOptions" :key="option">
+              <a class="dropdown-item" @click="filter = option" href="#">{{ option }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 
+          
+        <option value="High Energy">High Energy</option>
+        <option value="Calm" selected>Calm</option>
+        <option value="Dance">Dance</option>
+        <option value="Faster Tempo">Faster Tempo</option>
+        <option value="Slower Tempo">Slower Tempo</option> -->
+
         &nbsp;
         <!-- Choose number of songs -->
         <label for="total-tracks-select">Number of tracks:</label>
@@ -99,7 +117,12 @@
 
                     <p>{{ playlist.description }}</p>
                     <div v-if="playlistCreator === userId">
-                      <a href="#" class="btn btn-accent btn-sm" data-bs-toggle="modal" data-bs-target="#modal-default">
+                      <a
+                        href="#"
+                        class="btn btn-sm btn-rounded btn-outline-dark"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal-default"
+                      >
                         Edit Details
                       </a>
                     </div>
@@ -285,6 +308,7 @@ export default {
     return {
       playlist: {},
       tracks: [],
+      filterOptions: ["High Energy", "Calm", "Dance", "Faster Tempo", "Slower Tempo"],
       filter: "",
       newPlaylistParams: {},
       total_tracks: 20,
