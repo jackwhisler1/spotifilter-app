@@ -80,3 +80,6 @@ div.modal-backdrop {
 .main-block-header.portfolio-block-header img {
   object-fit: cover;
 }
+.breadcrumb-section-container {
+  margin-bottom: 10px;
+}

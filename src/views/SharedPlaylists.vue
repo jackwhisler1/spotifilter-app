@@ -17,7 +17,7 @@
                 <!-- container -->
                 <div class="container gx-4">
                   <!-- row -->
-                  <div class="row align-items-center justify-content-between">
+                  <div class="row align-items-center justify-content-center">
                     <!-- Title -->
                     <div class="breadcrumb-title">
                       <h1 class="breadcrumb-heading h1 font-weight-600 pt-30">Shared on Spotifilter</h1>
@@ -29,8 +29,16 @@
                 <!-- /End container -->
               </div>
               <!-- /End Breadcrumb container -->
+              <!-- Loading spinner -->
+              <div v-if="!shared_playlists.length" class="container">
+                <div class="row justify-content-center">
+                  <div class="spinner-border text-accent" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
               <!-- container -->
-              <div class="container gx-4">
+              <div v-else class="container gx-4">
                 <!-- row -->
                 <div class="row gx-36">
                   <!-- col-lg-12 -->
@@ -56,7 +64,7 @@
                               <!-- Block body -->
                               <div class="main-block-body blog-block-body">
                                 <!-- Block heading -->
-                                <div class="main-block-heading blog-block-heading">
+                                <div class="main-block-heading blog-block-heading" style="margin-top: 10px">
                                   <h2 class="h5 title">
                                     {{ playlist.name }}
                                   </h2>
