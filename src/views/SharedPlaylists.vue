@@ -12,6 +12,23 @@
           <main id="main" class="content-area-container site-main">
             <!-- Section -->
             <div class="main-section pt-72 pb-72">
+              <!-- Breadcrumb container -->
+              <div class="breadcrumb-section-container">
+                <!-- container -->
+                <div class="container gx-4">
+                  <!-- row -->
+                  <div class="row align-items-center justify-content-between">
+                    <!-- Title -->
+                    <div class="breadcrumb-title">
+                      <h1 class="breadcrumb-heading h1 font-weight-600 pt-30">Shared on Spotifilter</h1>
+                    </div>
+                    <!-- /End Title -->
+                  </div>
+                  <!-- /End row -->
+                </div>
+                <!-- /End container -->
+              </div>
+              <!-- /End Breadcrumb container -->
               <!-- container -->
               <div class="container gx-4">
                 <!-- row -->
@@ -101,41 +118,10 @@
                             <!-- /End Block container -->
                           </article>
                           <!-- /End Post -->
-                          <div
-                            class="hr-divider hr-divider-layout-5 header-color text-center hr-divider-fullwidth"
-                          ></div>
                         </div>
                         <!-- /End Grid item -->
                       </div>
                       <!-- /End Loop -->
-
-                      <!-- Pagination -->
-                      <div class="row gx-36">
-                        <!-- col-lg-12 -->
-                        <div class="col-lg-12">
-                          <nav aria-label="Page navigation" class="pagination-block">
-                            <ul class="pagination">
-                              <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                  <span aria-hidden="true">&laquo;</span>
-                                </a>
-                              </li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item active"><span class="page-link">3</span></li>
-                              <li class="page-item"><a class="page-link" href="#">4</a></li>
-                              <li class="page-item"><a class="page-link" href="#">5</a></li>
-                              <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                  <span aria-hidden="true">&raquo;</span>
-                                </a>
-                              </li>
-                            </ul>
-                          </nav>
-                        </div>
-                        <!-- /End col-lg-12 -->
-                      </div>
-                      <!-- /End Pagination -->
                     </div>
                     <!-- /End Blog wrapper -->
                   </div>
@@ -154,22 +140,6 @@
       <!-- /End row -->
     </div>
     <!-- /End Page body -->
-    <div v-for="playlist in shared_playlists" v-bind:key="playlist.id">
-      <h2>{{ playlist.name }}</h2>
-      <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
-      <p>Total Tracks: {{ playlist.tracks.total }}</p>
-      <ul>
-        Sample:
-        <li>"{{ playlist.tracks.items[0].track.name }}" by {{ playlist.tracks.items[0].track.artists[0].name }}</li>
-        <li>"{{ playlist.tracks.items[1].track.name }}" by {{ playlist.tracks.items[1].track.artists[0].name }}</li>
-        <li>"{{ playlist.tracks.items[2].track.name }}" by {{ playlist.tracks.items[2].track.artists[0].name }}</li>
-        <li>"{{ playlist.tracks.items[3].track.name }}" by {{ playlist.tracks.items[3].track.artists[0].name }}</li>
-      </ul>
-      <router-link :to="`/playlists/${playlist.id}`">
-        <button>Select</button>
-      </router-link>
-      <hr size="1" noshade width="50%" />
-    </div>
   </div>
 </template>
 

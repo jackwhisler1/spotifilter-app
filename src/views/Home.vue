@@ -12,6 +12,7 @@
           <main id="main" class="content-area-container site-main">
             <!-- Section -->
             <div
+              v-once
               class="main-section pt-0 pb-0 dark-1-color-bg bg-image"
               style="background-image: url(/assets/images/mixer-background.jpeg)"
             >
@@ -26,7 +27,11 @@
                       <div class="gap gap-72 d-none d-xl-block"></div>
 
                       <!-- Section title -->
-                      <div v-if="true" class="section-title section-title-intro text-center light-color mb-12">
+                      <div
+                        v-if="true"
+                        class="section-title section-title-intro text-center light-color mb-12"
+                        data-animation="animate__zoomIn"
+                      >
                         <!-- Section title container -->
                         <div class="section-title-container">
                           <!-- Section title body -->
@@ -48,7 +53,11 @@
                       <!-- /End Section title -->
 
                       <!-- Section title -->
-                      <div class="section-title section-title-intro text-center light-color">
+                      <div
+                        class="section-title section-title-intro text-center light-color"
+                        data-animation="animate__zoomIn"
+                        data-animation-delay="200"
+                      >
                         <!-- Section title container -->
                         <div class="section-title-container">
                           <!-- Section title body -->
