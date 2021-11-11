@@ -27,11 +27,7 @@
                       <div class="gap gap-72 d-none d-xl-block"></div>
 
                       <!-- Section title -->
-                      <div
-                        v-if="true"
-                        class="section-title section-title-intro text-center light-color mb-12"
-                        data-animation="animate__zoomIn"
-                      >
+                      <div v-if="true" class="section-title section-title-intro text-center light-color mb-12">
                         <!-- Section title container -->
                         <div class="section-title-container">
                           <!-- Section title body -->
@@ -39,7 +35,7 @@
                             <!-- Section title heading -->
                             <div class="section-title-heading">
                               <h1 class="font-weight-900">
-                                WELCOME TO
+                                WELCOME &nbsp; TO
                                 <br />
                                 SPOTIFILTER
                               </h1>
