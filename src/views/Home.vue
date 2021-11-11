@@ -26,11 +26,7 @@
                       <div class="gap gap-72 d-none d-xl-block"></div>
 
                       <!-- Section title -->
-                      <div
-                        v-if="true"
-                        class="section-title section-title-intro text-center light-color mb-12"
-                        data-animation="animate__zoomIn"
-                      >
+                      <div v-if="true" class="section-title section-title-intro text-center light-color mb-12">
                         <!-- Section title container -->
                         <div class="section-title-container">
                           <!-- Section title body -->
@@ -52,11 +48,7 @@
                       <!-- /End Section title -->
 
                       <!-- Section title -->
-                      <div
-                        class="section-title section-title-intro text-center light-color"
-                        data-animation="animate__zoomIn"
-                        data-animation-delay="200"
-                      >
+                      <div class="section-title section-title-intro text-center light-color">
                         <!-- Section title container -->
                         <div class="section-title-container">
                           <!-- Section title body -->
