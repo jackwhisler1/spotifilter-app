@@ -19,7 +19,7 @@
                 <!-- container -->
                 <div class="container gx-4">
                   <!-- row -->
-                  <div class="row gx-36 align-items-center justify-content-center height-100vh pt-0 pb-0">
+                  <div class="row gx-36 align-items-center justify-content-center height-75vh pt-0 pb-0">
                     <!-- col-lg-12 -->
                     <div class="col-lg-12">
                       <!-- GAP -->
@@ -27,6 +27,7 @@
 
                       <!-- Section title -->
                       <div
+                        v-if="true"
                         class="section-title section-title-intro text-center light-color mb-12"
                         data-animation="animate__zoomIn"
                       >
@@ -355,11 +356,13 @@ export default {
       sortAttribute: "",
       hasToken: false,
       apiKey: process.env.VUE_APP_SPOTIFY_API,
+      componentKey: 0,
     };
   },
   created: function () {
     this.hasAccessToken();
     this.playlistsIndex();
+    this.forceRerender();
   },
   mounted: function () {},
   methods: {
@@ -389,6 +392,9 @@ export default {
         this.sortAttribute = attribute;
         this.sortOrder = 1;
       }
+    },
+    forceRerender() {
+      this.componentKey += 1;
     },
   },
 };
