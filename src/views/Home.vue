@@ -55,9 +55,14 @@
                           <div class="section-title-body">
                             <!-- Block content -->
                             <div class="section-title-content">
-                              <p class="secondary-font-family white-color">
-                                Select a playlist to apply a filter and create something new.
-                              </p>
+                              <div v-if="isLoggedIn()">
+                                <p class="secondary-font-family white-color">
+                                  Select a playlist to apply a filter and create something new.
+                                </p>
+                              </div>
+                              <div v-else>
+                                <p>Please log in or sign up to create a playlist.</p>
+                              </div>
                             </div>
                             <!-- /End Block content -->
                           </div>
@@ -151,9 +156,9 @@
                 <!-- /End row -->
                 <div>
                   <a
+                    v-if="needsToken"
                     class="btn btn-accent"
                     :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=http://localhost:8080/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
-                    v-if="!hasToken"
                   >
                     Authorize Spotifilter
                   </a>
@@ -346,15 +351,15 @@ export default {
       filterAttribute: "",
       sortOrder: 1,
       sortAttribute: "",
-      hasToken: false,
+      needsToken: true,
+      test: false,
       apiKey: process.env.VUE_APP_SPOTIFY_API,
       componentKey: 0,
     };
   },
   created: function () {
-    this.hasAccessToken();
     this.playlistsIndex();
-    this.forceRerender();
+    this.hasAccessToken();
   },
   mounted: function () {},
   methods: {
@@ -366,8 +371,9 @@ export default {
     },
     hasAccessToken: function () {
       axios.get(`/users/${localStorage.getItem("user_id")}`).then((response) => {
-        if (response.data) {
-          this.hasToken = true;
+        if (response.data.access_token) {
+          this.needsToken = false;
+          console.log("has a token!");
           axios.get("/api/spotify/refresh").then((response) => {
             this.playlistsIndex();
             console.log(response.data);
@@ -385,8 +391,8 @@ export default {
         this.sortOrder = 1;
       }
     },
-    forceRerender() {
-      this.componentKey += 1;
+    isLoggedIn: function () {
+      return localStorage.jwt;
     },
   },
 };
