@@ -32,10 +32,12 @@
                 </button>
                 <!-- /End Toggler button -->
                 <!-- Logo -->
-                <a class="navbar-brand" href="/" title="Bason">
+
+                <router-link class="navbar-brand" to="/" title="spotifilter">
                   <img src="/assets/images/spotifilter-logo-2.png" alt="SpotiFilter" class="normal" />
                   <!-- <img src="/assets/images/spotifilter_logo.png" alt="Bason" class="transparent" /> -->
-                </a>
+                </router-link>
+
                 <!-- /End Logo -->
 
                 <!-- Header menu (Desktop) -->

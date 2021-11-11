@@ -9,7 +9,7 @@
                         ==================================================== -->
         <div id="primary" class="content-area col-lg-12">
           <!-- Main -->
-          <main id="main" class="content-area-container site-main">
+          <main id="main" class="content-area-container site-main pt-72">
             <!-- Section -->
             <div class="main-section pt-0 pb-0">
               <!-- Media (Background) -->
@@ -45,7 +45,6 @@
                   <!-- col-lg-12 -->
                   <div class="col-lg-12">
                     <!-- GAP -->
-                    <div class="gap gap-36"></div>
 
                     <!-- Sign form -->
                     <div class="form-block form-block-validation form-block-sign">

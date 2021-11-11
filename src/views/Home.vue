@@ -250,12 +250,20 @@
                     <div class="portfolio-block-wrapper portfolio-block-layout-2 portfolio-block-front">
                       <!-- Loop -->
                       <div
-                        v-if="playlists.length"
                         class="row gx-36 gy-36 row-cols-lg-3 row-cols-md-2 grid-wrapper isotope-grid"
                         style="position: relative; height: 100%"
                       >
+                        <!-- Loading spinner -->
+                        <div v-if="!playlists.length" class="container">
+                          <div class="row justify-content-center">
+                            <div class="spinner-border text-accent" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                          </div>
+                        </div>
                         <!-- Grid item -->
                         <div
+                          v-else
                           v-for="playlist in orderBy(filterBy(playlists, filterAttribute), sortAttribute, sortOrder)"
                           v-bind:key="playlist.id"
                           class="grid-item isotope-item isotope-graphics"
