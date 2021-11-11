@@ -133,12 +133,6 @@
 
                         <!-- /End Form -->
 
-                        <!-- Links -->
-
-                        <div class="form-block-sign-footer justify-content-center" style="padding: 0px">
-                          <small><a id="signup" href="/signup">New account? Sign up</a></small>
-                        </div>
-                        <!-- /End Links -->
                       </div>
                       <!-- /End Form container -->
                     </div>

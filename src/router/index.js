@@ -8,10 +8,12 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import UsersShow from "../views/UsersShow.vue";
 import SpotifyCallback from "../views/SpotifyCallback.vue";
+import VueSimpleAlert from "vue-simple-alert";
 import FlashMessage from "@smartweb/vue-flash-message";
 
 Vue.use(FlashMessage);
 Vue.use(VueRouter);
+Vue.use(VueSimpleAlert);
 
 const routes = [
   {

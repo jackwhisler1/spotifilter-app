@@ -61,7 +61,7 @@
         <!-- Choose number of songs -->
         <span class="dropdown">
           <button
-            class="btn btn-light btn-smdropdown-toggle"
+            class="btn btn-light btn-sm dropdown-toggle"
             type="button"
             id="dropdownMenuButtonSongs"
             data-bs-toggle="dropdown"
@@ -88,24 +88,27 @@
               <a class="dropdown-item" @click="total_tracks = 75" href="#">75</a>
             </li>
             <li v-if="tracks.length >= 100">
-              <a class="dropdown-item" @click="total_tracks = 100" href="#">1000</a>
+              <a class="dropdown-item" @click="total_tracks = 100" href="#">100</a>
             </li>
           </ul>
         </span>
-
-        <span class="btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-light btn-sm" style="margin: 10px">
-            <input type="checkbox" checked autocomplete="off" id="shared" @click="isShared = !isShared" />
-            Share on SpotiFilter
-          </label>
+        <span>
+          <button class="btn btn-sm btn-light" v-on:click="isShared = !isShared">
+            Share
+            <i v-show="isShared" class="fa fa-check"></i>
+            <i v-show="!isShared" class="fa fa-ban"></i>
+          </button>
         </span>
         <button style="margin: 10px" class="btn btn-sm btn-accent" v-on:click="createPlaylist()">
           Create Filtered Playlist
+          <div v-if="playlist_created === true && errors.length === 0" class="alert alert-success" role="alert">
+            A simple success alert—check it out!
+          </div>
         </button>
       </div>
     </div>
     <!-- Section -->
-    <div class="main-section">
+    <div class="main-section" style="padding-top: 12px">
       <!-- container -->
       <div class="container gx-4">
         <!-- row -->
@@ -118,27 +121,17 @@
               <div class="section-title-container">
                 <!-- Section title body -->
                 <div class="section-title-body">
-                  <!-- Section title heading -->
-                  <div class="section-title-heading">
-                    <h2>{{ playlist.name }}</h2>
-
-                    <p>{{ playlist.description }}</p>
-                    <div v-if="playlistCreator === userId">
-                      <a href="#" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#modal-default">
-                        Edit Details
-                      </a>
-                    </div>
+                  <div v-if="playlistCreator === userId">
+                    <a href="#" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#modal-default">
+                      Edit Details
+                    </a>
                   </div>
-                  <!-- /End Section title heading -->
                 </div>
                 <!--/End Section title body -->
               </div>
               <!-- /End Section title container -->
             </div>
             <!-- /End Section title -->
-
-            <!-- GAP -->
-            <div class="gap gap-36"></div>
           </div>
           <!-- /End col-lg-8 -->
 
@@ -309,18 +302,20 @@ export default {
     return {
       playlist: {},
       tracks: [],
+      errors: [],
       filterOptions: ["High Energy", "Calm", "Dance", "Faster Tempo", "Slower Tempo"],
       filter: "High Energy",
       newPlaylistParams: {},
       total_tracks: 20,
       userId: "",
+      playlist_created: false,
       playlistCreator: "",
       editPlaylistParams: {
         name: "",
         description: "",
       },
       isShow: false,
-      isShared: false,
+      isShared: true,
       shared_params: {},
       create_show: true,
     };
@@ -329,9 +324,12 @@ export default {
     this.showPlaylist();
     this.getUserId();
   },
+  mounted: function () {},
 
   methods: {
     showPlaylist: function () {
+      axios.get("/api/spotify/refresh");
+
       axios.get(`/playlists/${this.$route.params.id}`).then((response) => {
         console.log("playlist show", response.data);
         this.playlist = response.data;
@@ -344,8 +342,6 @@ export default {
       this.playlist.filter = this.filter;
       this.playlist.total_tracks = this.total_tracks;
       // If share playlist option is marked, post to /shared_playlists
-      // Send object with playlist_id: "", user_id: int
-
       axios
         .post("/playlists", this.playlist)
         .then((response) => {
@@ -356,12 +352,20 @@ export default {
               user_id: localStorage.getItem("user_id"),
             };
             axios.post("/shared_playlists", this.shared_params);
+            console.log(this.shared_params);
+            console.log("sharing");
           }
           this.create_show = false;
+          this.playlist_created = true;
+          this.$alert("Playlist filtered and created.", "Success!", "success");
+
           this.$router.push(`/playlists/${response.data.id}`);
           this.showPlaylist();
         })
         .catch((error) => {
+          console.log(this.playlist);
+          console.log(this.shared_params);
+          this.errors = error.response;
           console.log("playlists create error", error.response);
         });
     },

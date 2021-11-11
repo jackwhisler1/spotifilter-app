@@ -15,6 +15,7 @@
     "mdb-ui-kit": "^3.9.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vue-simple-alert": "^1.1.1",
     "vue2-filters": "^0.13.0"
   },
   "devDependencies": {

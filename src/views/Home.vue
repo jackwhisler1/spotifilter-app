@@ -249,7 +249,7 @@
                   <!-- col-lg-12 -->
                   <div class="col-lg-12">
                     <!-- Portfolio wrapper -->
-                    <div class="portfolio-block-wrapper portfolio-block-layout-3 portfolio-block-front">
+                    <div class="portfolio-block-wrapper portfolio-block-layout-2 portfolio-block-front">
                       <!-- Loop -->
                       <div
                         v-if="playlists.length"
@@ -268,30 +268,33 @@
                             <div class="main-block-container portfolio-block-container">
                               <!-- Block header -->
                               <div class="main-block-header portfolio-block-header">
-                                <router-link :to="`/playlists/${playlist.id}`" class="overlay-effect zoom-effect">
+                                <router-link :to="`/playlists/${playlist.id}`" class="zoom-effect">
                                   <img v-bind:src="playlist.images[0].url" v-bind:alt="playlist.id" />
                                 </router-link>
                               </div>
                               <!-- /End Block header -->
 
                               <!-- Block body -->
-                              <div class="main-block-body portfolio-block-body">
-                                <!-- Block heading -->
-                                <div class="main-block-heading portfolio-block-heading">
-                                  <h2 class="h5 title">
-                                    <a href="#">{{ playlist.name }}</a>
-                                  </h2>
+                              <router-link
+                                style="text-decoration: none; color: inherit"
+                                :to="`/playlists/${playlist.id}`"
+                              >
+                                <div class="main-block-body portfolio-block-body">
+                                  <!-- Block heading -->
+                                  <div class="main-block-heading portfolio-block-heading">
+                                    <h2 class="h5 title no-underline">
+                                      {{ playlist.name }}
+                                    </h2>
 
-                                  <ul class="meta-block">
-                                    <li class="meta-block-category">
-                                      <span>
-                                        <a href="#">Total Tracks: {{ playlist.tracks.total }}</a>
-                                      </span>
-                                    </li>
-                                  </ul>
+                                    <ul class="meta-block">
+                                      <li class="meta-block-category">
+                                        <span>Total Tracks: {{ playlist.tracks.total }}</span>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <!-- /End Block heading -->
                                 </div>
-                                <!-- /End Block heading -->
-                              </div>
+                              </router-link>
                               <!--/End Block body -->
                             </div>
                             <!-- /End Block container -->
@@ -354,18 +357,13 @@ export default {
       apiKey: process.env.VUE_APP_SPOTIFY_API,
     };
   },
-  created: function () {},
-  mounted: function () {
+  created: function () {
     this.hasAccessToken();
-
     this.playlistsIndex();
   },
-  // mounted: function () {
-  //   this.fetchRefreshedData();
-  // },
+  mounted: function () {},
   methods: {
     playlistsIndex: function () {
-      axios.get("/api/spotify/refresh");
       axios.get("/playlists").then((response) => {
         console.log(response.data);
         this.playlists = response.data;
@@ -375,6 +373,10 @@ export default {
       axios.get(`/users/${localStorage.getItem("user_id")}`).then((response) => {
         if (response.data) {
           this.hasToken = true;
+          axios.get("/api/spotify/refresh").then((response) => {
+            this.playlistsIndex();
+            console.log(response.data);
+          });
         }
       });
     },
@@ -388,14 +390,6 @@ export default {
         this.sortOrder = 1;
       }
     },
-    // fetchRefreshedData: function () {
-    //   if (this.playlists.length === null) {
-    //     axios.get("/playlists").then((response) => {
-    //       console.log(response.data);
-    //       this.playlists = response.data;
-    //     });
-    //   }
-    // },
   },
 };
 </script>

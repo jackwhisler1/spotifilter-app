@@ -193,12 +193,26 @@ export default {
   data: function () {
     return {};
   },
+  created: function () {
+    this.isLoggedIn();
+    this.getUserId();
+  },
+  mounted: function () {
+    this.newUser();
+  },
   methods: {
     isLoggedIn: function () {
       return localStorage.jwt;
     },
     getUserId: function () {
+      console.log(localStorage.user_id);
+
       return localStorage.user_id;
+    },
+    newUser: function () {
+      if (this.isLoggedIn() === undefined) {
+        this.$router.push("/login");
+      }
     },
   },
 };

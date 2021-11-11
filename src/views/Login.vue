@@ -30,19 +30,7 @@
                   data-owl-slider-mouseDrag="no"
                   data-owl-slider-touchDrag="no"
                   data-page-direction="ltr"
-                >
-                  <!-- Slider item -->
-                  <div class="owl-slider-item" style="background-image: url(/assets/images/pages/022.jpg)"></div>
-                  <!-- /End Slider item -->
-
-                  <!-- Slider item -->
-                  <div class="owl-slider-item" style="background-image: url(/assets/images/pages/023.jpg)"></div>
-                  <!-- /End Slider item -->
-
-                  <!-- Slider item -->
-                  <div class="owl-slider-item" style="background-image: url(/assets/images/pages/024.jpg)"></div>
-                  <!-- /End Slider item -->
-                </div>
+                ></div>
                 <!-- /End Owl slider -->
               </div>
               <!-- /End Media (Background) -->
