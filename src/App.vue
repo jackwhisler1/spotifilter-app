@@ -197,9 +197,7 @@ export default {
     this.isLoggedIn();
     this.getUserId();
   },
-  mounted: function () {
-    this.newUser();
-  },
+  mounted: function () {},
   methods: {
     isLoggedIn: function () {
       return localStorage.jwt;
@@ -208,11 +206,6 @@ export default {
       console.log(localStorage.user_id);
 
       return localStorage.user_id;
-    },
-    newUser: function () {
-      if (this.isLoggedIn() === undefined) {
-        this.$router.push("/login");
-      }
     },
   },
 };

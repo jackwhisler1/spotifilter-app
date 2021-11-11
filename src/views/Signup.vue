@@ -11,7 +11,7 @@
           <!-- Main -->
           <main id="main" class="content-area-container site-main">
             <!-- Section -->
-            <div class="main-section pt-0 pb-0">
+            <div class="main-section pt-30 pb-0">
               <!-- Media (Background) -->
               <div class="section-media section-media-bg">
                 <!-- Owl slider -->
@@ -32,15 +32,15 @@
                   data-page-direction="ltr"
                 >
                   <!-- Slider item -->
-                  <div class="owl-slider-item" style="background-image: url(/assets/images/pages/022.jpg)"></div>
+                  <div class="owl-slider-item" style="background-image: url(/assets/images/black-background.jpg)"></div>
                   <!-- /End Slider item -->
 
                   <!-- Slider item -->
-                  <div class="owl-slider-item" style="background-image: url(/assets/images/pages/023.jpg)"></div>
+                  <div class="owl-slider-item" style="background-image: url(/assets/images/black-background.jpg)"></div>
                   <!-- /End Slider item -->
 
                   <!-- Slider item -->
-                  <div class="owl-slider-item" style="background-image: url(/assets/images/pages/024.jpg)"></div>
+                  <div class="owl-slider-item" style="background-image: url(/assets/images/black-background.jpg)"></div>
                   <!-- /End Slider item -->
                 </div>
                 <!-- /End Owl slider -->
@@ -132,7 +132,6 @@
                         </form>
 
                         <!-- /End Form -->
-
                       </div>
                       <!-- /End Form container -->
                     </div>
