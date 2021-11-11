@@ -48,11 +48,7 @@
                       <!-- /End Section title -->
 
                       <!-- Section title -->
-                      <div
-                        class="section-title section-title-intro text-center light-color"
-                        data-animation="animate__zoomIn"
-                        data-animation-delay="200"
-                      >
+                      <div class="section-title section-title-intro text-center light-color">
                         <!-- Section title container -->
                         <div class="section-title-container">
                           <!-- Section title body -->
