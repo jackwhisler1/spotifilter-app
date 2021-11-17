@@ -158,7 +158,7 @@
                   <a
                     v-if="needsToken"
                     class="btn btn-accent"
-                    :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=https://spotifilter.netlify.app//spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
+                    :href="`https://accounts.spotify.com/authorize?client_id=${apiKey}&response_type=code&redirect_uri=https://spotifilter.netlify.app/spotify/callback&scope=playlist-read-private playlist-modify-private user-read-private user-read-email playlist-read-collaborative user-library-modify playlist-modify-public`"
                   >
                     Authorize Spotifilter
                   </a>
