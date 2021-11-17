@@ -368,6 +368,7 @@ export default {
   created: function () {
     this.playlistsIndex();
     this.hasAccessToken();
+    // Test
   },
   mounted: function () {},
   methods: {
