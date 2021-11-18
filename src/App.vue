@@ -194,7 +194,7 @@
 export default {
   data: function () {
     return {
-      userId =
+      userId: 0,
     };
   },
   created: function () {
