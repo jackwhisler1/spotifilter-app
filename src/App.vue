@@ -209,6 +209,7 @@ export default {
     getUserId: function () {
       console.log(localStorage.user_id);
       this.userId = localStorage.user_id;
+      console.log("user id", this.userId);
       return this.userId;
     },
   },
