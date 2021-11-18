@@ -60,7 +60,7 @@
                       <router-link class="nav-link" to="/signup"><span>Sign Up</span></router-link>
                     </li>
                     <!-- My Account -->
-                    <li v-if="isLoggedIn()" class="nav-item">
+                    <li v-if="isLoggedIn() && user_id !== 5" class="nav-item">
                       <router-link class="nav-link" :to="`/users/${getUserId()}`"><span>My Account</span></router-link>
                     </li>
                     <!-- Logout -->
@@ -193,7 +193,9 @@
 <script>
 export default {
   data: function () {
-    return {};
+    return {
+      userId =
+    };
   },
   created: function () {
     this.isLoggedIn();
@@ -206,8 +208,8 @@ export default {
     },
     getUserId: function () {
       console.log(localStorage.user_id);
-
-      return localStorage.user_id;
+      this.userId = localStorage.user_id;
+      return this.userId;
     },
   },
 };
