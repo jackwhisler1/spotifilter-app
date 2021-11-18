@@ -60,7 +60,7 @@
                       <router-link class="nav-link" to="/signup"><span>Sign Up</span></router-link>
                     </li>
                     <!-- My Account -->
-                    <li v-if="isLoggedIn() && user_id !== 5" class="nav-item">
+                    <li v-if="isLoggedIn() && userId !== 5" class="nav-item">
                       <router-link class="nav-link" :to="`/users/${getUserId()}`"><span>My Account</span></router-link>
                     </li>
                     <!-- Logout -->
