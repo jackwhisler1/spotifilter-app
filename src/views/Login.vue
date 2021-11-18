@@ -70,6 +70,7 @@
                           <div class="col-md-12">
                             <label class="label">
                               Email
+                              <small>If you would like to demo the app, use demo@gmail.com</small>
                               <input class="form-control" type="email" v-model="newSessionParams.email" />
                             </label>
                           </div>
@@ -79,6 +80,7 @@
                           <div class="col-md-12">
                             <label class="label">
                               Password
+                              <small>The password for the demo account is 'demo'</small>
                               <input class="form-control" type="password" v-model="newSessionParams.password" />
                             </label>
                           </div>
